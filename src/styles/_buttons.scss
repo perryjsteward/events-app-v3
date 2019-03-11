@@ -1,0 +1,187 @@
+button, .button {
+    display: inline-flex;
+    position: relative;
+    white-space: nowrap;
+    text-decoration: none;
+    line-height: 1;
+
+    // defaults
+    font-size: $text-300;
+    padding: 12px 16px;
+    margin: $space-100;
+    border-radius: 4px;
+    border: none;
+    background-color: $grey-600;
+    color: white;
+
+    // sizes
+    &.btn-lg {
+        font-size: $text-600;
+        padding: 18px 30px;
+        border-radius: 8px;
+    }
+    &.btn-md {
+        font-size: $text-400;
+        padding: 17px 28px; 
+        border-radius: 6px;
+    }
+    &.btn-sm {
+        font-size: $text-300;
+        padding: 14px 22px;  
+        border-radius: 4px;
+    }
+    &.btn-xs {
+        font-size: $text-200;
+        padding: 10px 14px;
+        border-radius: 3px;
+    }
+
+    // default actions
+    &:active {
+        outline: none !important;
+        background-color: $grey-700;
+    }
+    &:focus {
+        outline: none !important;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:disabled {
+        background-color: rgba($grey-600, 0.3);
+    }
+
+    // button types
+    &.outline {
+        background-color: transparent !important;
+        color: $grey-600;
+        border-color: $grey-600;
+        border-style: solid;
+
+        &.btn-lg { border-width: 2px; }
+        &.btn-md { border-width: 2px; }
+        &.btn-sm { border-width: 1px; }
+        &.btn-xs { border-width: 1px; }
+
+        &:active {
+            border-color: $grey-700;
+            color: $grey-700;
+        }
+        &:disabled {
+            border-color: rgba($grey-600, 0.3);
+            color: rgba($grey-600, 0.3);
+        }
+    }
+
+    &.primary {
+        background-color: $primary;
+        color: white;
+
+        // type actions
+        &:active {
+            background-color: $primary-500;
+        }
+
+        &:disabled {
+            background-color: rgba($primary, 0.3) !important;
+        }
+
+        &.outline {
+            background-color: transparent !important;
+            color: $primary;
+            border-color: $primary !important;
+            border-style: solid;
+    
+            &:active {
+                border-color: $primary-500;
+                color: $primary-500;
+            }
+
+            &:disabled {
+                border-color: rgba($primary, 0.3) !important;
+                color: rgba($primary, 0.3) !important;
+            }
+        }
+    }
+
+    &.success {
+        background-color: $green;
+        color: white;
+
+        // type actions
+        &:active {
+            background-color: $green-500;
+        }
+        &:disabled {
+            background-color: rgba($green, 0.3) !important;
+        }
+
+        &.outline {
+            background-color: transparent !important;
+            color: $green;
+            border-color: $green  !important;
+            border-style: solid;
+    
+            &:active {
+                border-color: $green-500;
+                color: $green-500;
+            }
+
+            &:disabled {
+                border-color: rgba($green-500, 0.3) !important;
+                color: rgba($green-500, 0.3) !important;
+            }
+        }
+    }
+
+    &.warning {
+        background-color: $orange;
+        color: white;
+
+        // type actions
+        &:active {
+            background-color: $orange-500;
+        }
+        &:disabled {
+            background-color: rgba($orange, 0.3) !important;
+        }
+
+        &.outline {
+            background-color: transparent !important;
+            color: $orange;
+            border-color: $orange  !important;
+            border-style: solid;
+    
+            &:active {
+                border-color: $orange-500;
+                color: $orange-500;
+            }
+
+            &:disabled {
+                border-color: rgba($orange, 0.3) !important;
+                color: rgba($orange, 0.3) !important;
+            }
+        }
+    }
+
+    &.link {
+        background-color: transparent;
+        color: $primary;
+
+        // type actions 
+        &:hover {
+            text-decoration: underline;
+        }
+        &:active {
+            color: $primary-500;
+        }
+        &:disabled {
+            color: rgba($primary, 0.3);
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+
+input[type=text] {
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    width: 100%;
+    font-family: $font-primary;
+    line-height: normal;
+    border: 1px solid $grey-300;
+    color: $grey-600;
+
+    font-size: $text-400;
+    padding: $space-400;
+    border-radius: $space-100;
+    margin-bottom: $space-500 !important;
+    margin-top: $space-200 !important;
+
+
+
+     // default actions
+    &:active {
+        outline: none !important;
+    }
+    &:focus {
+        outline: none !important;
+        border: 1px solid $green;
+    }
+
+    &:disabled {
+        outline: none !important;
+        border: 1px solid $green;
+    }
+
+    &::placeholder {
+        color: $grey-400;
+    }
+
+    &:invalid {
+        border: 1px solid $orange;
+        background-color: rgba($orange-100, 0.5);
+
+        &:focus {
+            outline: none !important;
+            border: 1px solid $green;
+        }
+    }
+}
+
+label {
+    width: 100%;
+    color: $grey-600;
+    font-size: $text-500;
+}

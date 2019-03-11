@@ -1,0 +1,25 @@
+
+@import './styles/colors';
+@import './styles/spacing';
+@import './styles/typography';
+@import './styles/buttons';
+@import './styles/custom';
+@import './styles/inputs';
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body, #app, #app>div, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* { 
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+   box-sizing: border-box; 
+}

@@ -1,0 +1,33 @@
+@import '../../styles/spacing';
+
+.create-form__content {
+    margin-left: auto;
+    margin-right: 0;
+    width: $space-1100;
+    padding: $space-500;
+    padding-right: $space-600;
+    padding-left: $space-600;
+    height: 100%;
+}
+
+@media only screen and (max-width: 830px) { 
+    .create-form__content {
+        margin: auto;
+    }
+}
+
+.create-form__container {
+    width: 50%;
+}
+
+@media only screen and (max-width: 900px) { 
+    .create-form__container {
+        width: 55%;
+    }
+}
+
+@media only screen and (max-width: 830px) { 
+    .create-form__container {
+        width: 100%;
+    }
+}

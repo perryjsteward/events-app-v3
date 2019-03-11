@@ -1,0 +1,25 @@
+@import '../../styles/spacing';
+
+.create-form__map {
+    height: 100%;
+    width: 40%;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.map__input-field {
+    margin: $space-600;
+}
+
+@media only screen and (max-width: 900px) { 
+    .create-form__map {
+        width: 35% !important;
+    }
+}
+
+@media only screen and (max-width: 830px) { 
+    .create-form__map{
+        display: none;
+    }
+}

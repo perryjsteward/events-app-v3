@@ -1,0 +1,40 @@
+@import '../../styles/colors';
+@import '../../styles/spacing';
+
+.create-form__controls__button-wrapper{
+   float: right;
+   height: 100%;
+   padding-bottom: $space-500;
+}
+
+.create-form__controls-container {
+    position: fixed;
+    bottom: 0;
+    width: 60%;
+    /* height: 100px; */
+    background-color: white;
+    color: white;
+    text-align: center;
+ }
+
+ .create-form__controls-content {
+    margin: 0 $space-400;
+    margin-right: $space-600;
+    margin-left: $space-600;
+    padding: $space-500 0;
+    border-top: 1px solid $grey-100;
+    box-shadow: 0 -5px 5px -5px $grey-100;
+ }
+
+ @media only screen and (max-width: 900px) { 
+    .create-form__controls-container {
+        width: 65%;
+     }
+}
+
+@media only screen and (max-width: 830px) { 
+    .create-form__controls-container {
+        width: 100%;
+     }
+
+}
