@@ -23,7 +23,8 @@
         width: 35% !important;
     }
     .map__input-field {
-        width: 35% !important;
+        width: calc(40% - 80px) !important;
+        margin-right: $space-400;
     }
 }
 
