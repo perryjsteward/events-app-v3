@@ -25,13 +25,11 @@ const Button = (props) => {
         ...((btnTypes[props.type]) ? [btnTypes[props.type]] : [])
     ];
 
-    const disabled = props.disabled;
-
     return (
         <button
             onClick={props.onClick}
             className={classes.join(' ')}
-            disabled={disabled}>
+            disabled={props.disabled}>
             {props.children}
         </button>
     );
