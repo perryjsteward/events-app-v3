@@ -54,8 +54,15 @@ input{
 input[type=date]{
     color: $grey-400;
 }
+input[type=date]::after{
+    content: '';
+}
+
 input[type=time]{
     color: $grey-400;
+}
+input[type=time]::after{
+    content: '';
 }
 
 input.value-entered {
@@ -113,4 +120,23 @@ label {
 
 .form-control .inline:last-of-type {
     margin-right: 0px;
+}
+
+.form__upload-control {
+    margin-bottom: $space-600;
+}
+
+.form__upload-hint {
+    margin-top: 17px;
+    margin-left: $space-300;
+}
+
+.form__upload-control > button {
+    border-color: $grey-400 !important;
+    color: $grey-500;
+
+    &:active {
+        border-color: $grey-500 !important;
+        color: $grey-600;
+    }
 }

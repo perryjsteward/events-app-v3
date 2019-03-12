@@ -3,6 +3,7 @@ import CreateEventControls from '../CreateEventControls/CreateEventControls';
 import './CreateEventForm.scss';
 
 import Input from '../../shared/Input/Input';
+import Upload from '../../shared/Upload/Upload';
 
 const Form = () => {
     return (
@@ -11,11 +12,16 @@ const Form = () => {
                 <h4>Create an Event</h4>
                 <p>Pop your event information here and get your free page to share with friends and family.</p>
                 <br/>
+                {/* <Upload>Select a background image</Upload> */}
                 <Input  
                     required
                     type="text" 
                     label="Event name" 
                     placeholder="e.g. My Birthday Party"/>
+                <Input 
+                    type="text" 
+                    label="Description" 
+                    placeholder="Enter Something here"/>
                 <div className="form-control">
                     <div className="inline">
                         <Input 
@@ -46,11 +52,6 @@ const Form = () => {
                             placeholder="Enter Something here"/>
                     </div>
                 </div>
-                
-                <Input 
-                    type="text" 
-                    label="Description" 
-                    placeholder="Enter Something here"/>
             </div>
             <CreateEventControls></CreateEventControls>
         </div>
