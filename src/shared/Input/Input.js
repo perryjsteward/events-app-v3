@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = (props) => {
+const Input = React.forwardRef((props, ref) => {
     let inputLabel = '';
     let inputHint = '';
     let inputIcon = '';
@@ -34,6 +34,8 @@ const Input = (props) => {
 
     inputType = (
         <input
+            ref={ref}
+            id={props.id}
             onChange={(event) => props.onChange(event)}
             value={props.value}
             className={classes.join(' ')}
@@ -55,6 +57,6 @@ const Input = (props) => {
             {inputHint}
         </React.Fragment>
     );
-};
+});
 
 export default Input;

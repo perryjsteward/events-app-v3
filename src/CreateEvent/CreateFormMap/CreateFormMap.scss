@@ -3,23 +3,35 @@
 .create-form__map {
     height: 100%;
     width: 40%;
-    position: fixed;
+    position: fixed !important;
     top: 0;
     right: 0;
 }
 
 .map__input-field {
     margin: $space-600;
+    height: 100%;
+    width: calc(40% - 100px);
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 @media only screen and (max-width: 900px) { 
     .create-form__map {
         width: 35% !important;
     }
+    .map__input-field {
+        width: 35% !important;
+    }
 }
 
 @media only screen and (max-width: 830px) { 
     .create-form__map{
+        display: none;
+    }
+    .map__input-field{
         display: none;
     }
 }
