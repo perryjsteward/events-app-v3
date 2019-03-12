@@ -34,6 +34,8 @@ const Input = (props) => {
 
     inputType = (
         <input
+            onChange={(event) => props.onChange(event)}
+            value={props.value}
             className={classes.join(' ')}
             type={props.type}
             placeholder={props.placeholder}

@@ -1,8 +1,8 @@
 import React from 'react';
-import './Map.scss';
+import './CreateFormMap.scss';
 import Input from  '../../shared/Input/Input';
 
-const Map = () => {
+const CreateFormMap = () => {
     return (
         <div className="create-form__map bg-grey-100">
             <div className="map__input-field">
@@ -16,4 +16,4 @@ const Map = () => {
     );
 };
 
-export default Map;
+export default CreateFormMap;

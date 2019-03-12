@@ -1,8 +1,8 @@
 import React from 'react';
 
 // components
-import Map from  './Map/Map';
-import CreateEventForm from './CreateEventForm/CreateEventForm';
+import CreateFormMap from  './CreateFormMap/CreateFormMap';
+import CreateForm from './CreateForm/CreateForm';
 
 // styling
 import './CreateEvent.css';
@@ -10,8 +10,8 @@ import './CreateEvent.css';
 const CreateEvent = () => {
   return (
     <div className="create-form__row">
-      <CreateEventForm></CreateEventForm>
-      <Map></Map>
+      <CreateForm></CreateForm>
+      <CreateFormMap></CreateFormMap>
     </div>
   );
 };

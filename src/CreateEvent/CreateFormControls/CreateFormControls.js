@@ -1,8 +1,8 @@
 import React from 'react';
-import './CreateEventControls.scss';
+import './CreateFormControls.scss';
 import Button from '../../shared/Button/Button';
 
-const Footer = () => {
+const CreateFormControls = () => {
     return (
         <div className="create-form__controls-container">
             <div className="create-form__controls-content">
@@ -23,4 +23,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default CreateFormControls;
