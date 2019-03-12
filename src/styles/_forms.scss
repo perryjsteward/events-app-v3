@@ -1,5 +1,5 @@
 
-input[type=text] {
+input{
     -webkit-transition: all .3s ease-out;
     -moz-transition: all .3s ease-out;
     -ms-transition: all .3s ease-out;
@@ -14,10 +14,8 @@ input[type=text] {
     font-size: $text-400;
     padding: $space-400;
     border-radius: $space-100;
-    margin-bottom: $space-500 !important;
+    margin-bottom: $space-600 !important;
     margin-top: $space-200 !important;
-
-
 
      // default actions
     &:active {
@@ -46,10 +44,73 @@ input[type=text] {
             border: 1px solid $green;
         }
     }
+
+    &:required::after {
+        content: " *"
+    }
+}
+
+
+input[type=date]{
+    color: $grey-400;
+}
+input[type=time]{
+    color: $grey-400;
+}
+
+input.value-entered {
+    color: $grey-600;
 }
 
 label {
     width: 100%;
     color: $grey-600;
     font-size: $text-500;
+
+}
+
+.input__label-required {
+    color: $orange;
+}
+
+.input__label-required::before {
+    content: ' ';
+}
+
+.input__icon {
+    position: absolute;
+    margin-top: 28px;
+    margin-left: 18px;
+    color: $grey-500;
+}
+
+.input__with-icon {
+    text-indent: 29px !important;
+}
+
+
+.form-control{
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    // flex-wrap: nowrap;
+    width: 100%;
+}
+
+.form-control .inline {
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.form-control > .inline {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form-control .inline:first-of-type {
+    margin-left: 0px;
+}
+
+.form-control .inline:last-of-type {
+    margin-right: 0px;
 }

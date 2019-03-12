@@ -4,7 +4,7 @@
 @import './styles/typography';
 @import './styles/buttons';
 @import './styles/custom';
-@import './styles/inputs';
+@import './styles/forms';
 
 html {
   height: 100%;
@@ -19,7 +19,7 @@ body, #app, #app>div, #root {
 }
 
 * { 
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
-   box-sizing: border-box; 
+  -moz-box-sizing: border-box !important; 
+  -webkit-box-sizing: border-box !important; 
+   box-sizing: border-box !important; 
 }

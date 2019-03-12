@@ -11,20 +11,45 @@ const Form = () => {
                 <h4>Create an Event</h4>
                 <p>Pop your event information here and get your free page to share with friends and family.</p>
                 <br/>
-                <Input 
-                    size="large" 
+                <Input  
+                    required
                     type="text" 
-                    label="Label name" 
-                    placeholder="Enter Something here"/>
+                    label="Event name" 
+                    placeholder="e.g. My Birthday Party"/>
+                <div className="form-control">
+                    <div className="inline">
+                        <Input 
+                            required
+                            type="date" 
+                            label="Start Date" 
+                            placeholder="Enter Something here"/>
+                    </div>
+                    <div className="inline">
+                        <Input 
+                            required
+                            type="time" 
+                            label="Start Time" 
+                            placeholder="Enter Something here"/>
+                    </div>
+                </div>
+                <div className="form-control">
+                    <div className="inline">
+                        <Input 
+                            type="date" 
+                            label="End Date" 
+                            placeholder="Enter Something here"/>
+                    </div>
+                    <div className="inline">
+                        <Input 
+                            type="time" 
+                            label="End Time" 
+                            placeholder="Enter Something here"/>
+                    </div>
+                </div>
+                
                 <Input 
-                    size="large" 
                     type="text" 
-                    label="Label name" 
-                    placeholder="Enter Something here"/>
-                <Input 
-                    size="large" 
-                    type="text" 
-                    label="Label name" 
+                    label="Description" 
                     placeholder="Enter Something here"/>
             </div>
             <CreateEventControls></CreateEventControls>

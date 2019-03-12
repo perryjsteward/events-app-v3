@@ -8,7 +8,9 @@
     padding-right: $space-600;
     padding-left: $space-600;
     height: 100%;
+    margin-bottom: $space-600;
 }
+
 
 @media only screen and (max-width: 830px) { 
     .create-form__content {
@@ -31,3 +33,4 @@
         width: 100%;
     }
 }
+
