@@ -45,6 +45,16 @@ input{
         }
     }
 
+    &.invalid {
+        border: 1px solid $orange;
+        background-color: rgba($orange-100, 0.5);
+
+        &:focus {
+            outline: none !important;
+            border: 1px solid $green;
+        }
+    }
+
     &:required::after {
         content: " *"
     }
@@ -131,7 +141,6 @@ label {
     width: 100%;
     color: $grey-600;
     font-size: $text-500;
-
 }
 
 .input__label-required {
@@ -211,4 +220,12 @@ label {
         }
     }
 
+}
+
+.input__hint {
+    position: relative;
+    top: -30px;
+    line-height: 0px;
+    font-size: $text-200;
+    color: $grey-500;
 }

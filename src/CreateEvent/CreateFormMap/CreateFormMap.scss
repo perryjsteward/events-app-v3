@@ -7,17 +7,15 @@
         position: fixed !important;
         top: 0;
         right: 0;
-        box-sizing : border-box;
     }
 
     .map__input-field {
-        margin: $space-600;
+        margin: $space-600 auto;
         // height: 100%;
-        // width: 100% !important;
-        // position: relative !important;
-        // top: $space-700;
-        // right: 0;
-        z-index: 10000;
+        position: fixed !important;
+        right: 40px;
+        width: calc(40% - 80px) !important;
+        z-index: 100;
     }
 }
 
@@ -25,6 +23,12 @@
     .create-form__map{
         width: 45% !important; 
     }
+
+    .map__input-field {
+        // width: 45% !important; 
+        width: calc(40% - 50px) !important;
+    }
+
 }
 
 
@@ -34,12 +38,17 @@
         width: 100% !important; 
         height: $space-1100;
         margin-bottom: 100px;
+        position: relative;
+        top: -200px;
     }
     .map__input-field{
         // display: none;
         margin: auto;
         padding: $space-600;
+        right: 0px;
         width: $space-1100 !important;
+        position: relative;
+        z-index: 1000;
     }
 }
 

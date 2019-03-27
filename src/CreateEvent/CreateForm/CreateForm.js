@@ -14,6 +14,7 @@ export default class CreateForm extends Component {
             type: 'text',
             label: 'Event name',
             placeholder: 'e.g. My Birthday Party',
+            hint: 'You must name your event something',
             value: '',
             validation: {
                 required: true,
@@ -37,6 +38,7 @@ export default class CreateForm extends Component {
             label: 'Start Date',
             group: 1,
             position: 1,
+            hint: 'The date must be in the future',
             value: '',
             validation: {
                 required: true,
@@ -51,6 +53,7 @@ export default class CreateForm extends Component {
             group: 1,
             position: 2,
             value: '',
+            hint: 'The time must be in the future',
             validation: {
                 required: false,
                 atLeastNow: true //not implemented yet
@@ -96,7 +99,8 @@ export default class CreateForm extends Component {
             return {
                 ...el,
                  value: e.target.value,
-                 isValid: inputValidation(e.target.value, el.validation)
+                 isValid: inputValidation(e.target.value, el.validation, currForm),
+                 hasStarted: true
             }
         }
         return el;
@@ -121,6 +125,9 @@ export default class CreateForm extends Component {
             required={el.validation.required}
             type={el.type} 
             label={el.label}
+            hint={el.hint}
+            hasStarted={el.hasStarted}
+            isValid={el.isValid}
             placeholder={el.placeholder}/>
     );
     // return it with group & position info
