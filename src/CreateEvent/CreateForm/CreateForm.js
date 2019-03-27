@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CreateFormControls from '../CreateFormControls/CreateFormControls';
 import './CreateForm.scss';
-import { inputValidation, formValidation } from '../../utils/formUtils';
+import { formRules, inputValidation, formValidation } from '../../utils/formUtils';
 
 import Input from '../../shared/Input/Input';
 // import Upload from '../../shared/Upload/Upload';
@@ -17,7 +17,7 @@ export default class CreateForm extends Component {
             hint: 'You must name your event something',
             value: '',
             validation: {
-                required: true,
+                [formRules.isRequired]: true,
             },
             isValid: false
         },
@@ -28,7 +28,7 @@ export default class CreateForm extends Component {
             placeholder: 'e.g. This weekend i\'m going to host at mine...',
             value: '',
             validation: {
-                required: false,
+                [formRules.isRequired]: false,
             },
             isValid: true
         },
@@ -42,8 +42,8 @@ export default class CreateForm extends Component {
             min: new Date().toISOString().split('T')[0],
             value: '',
             validation: {
-                required: true,
-                atLeastToday: true //not implemented yet
+                [formRules.isRequired]: true,
+                [formRules.isAtLeastToday]: true //not implemented yet
             },
             isValid: false
         },
@@ -56,8 +56,8 @@ export default class CreateForm extends Component {
             value: '',
             hint: 'The time must be in the future',
             validation: {
-                required: false,
-                atLeastNow: true //not implemented yet
+                [formRules.isRequired]: false,
+                [formRules.isAtLeastNow]: true //not implemented yet
             },
             isValid: true
         },
@@ -70,9 +70,8 @@ export default class CreateForm extends Component {
             value: '',
             min: new Date().toISOString().split('T')[0],
             validation: {
-                required: false,
-                atLeastToday: true, //not implemented yet
-                isGreaterThanStartDateTime: true //not implemented yet
+                [formRules.isRequired]: false,
+                [formRules.isGreaterThanOrEqualStartDate]: true //not implemented yet
             },
             isValid: true
         },
@@ -85,7 +84,8 @@ export default class CreateForm extends Component {
             position: 2,
             value: '',
             validation: {
-                required: false,
+                [formRules.isRequired]: false,
+                [formRules.isGreaterThanOrEqualStartDateTime]: true,
             },
             isValid: true
         },
@@ -124,7 +124,7 @@ export default class CreateForm extends Component {
             key={el.name}
             value={el.value}
             onChange={(e) => this.handleUserInput(e, el.name)}
-            required={el.validation.required}
+            required={el.validation[formRules.isRequired]}
             type={el.type} 
             label={el.label}
             hint={el.hint}
