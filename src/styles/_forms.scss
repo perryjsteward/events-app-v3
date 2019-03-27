@@ -80,6 +80,10 @@ input[type=date]{
         content: none;
         color: $grey-400 !important;
     }
+    .hasInput::before {
+        content: none !important;
+        color: $grey-400 !important;
+    }
 }
 
 input[type=time]{
@@ -106,7 +110,18 @@ input[type=time]{
         content: none;
         color: $grey-400 !important;
     }
+
 }
+
+.hasInput {
+    content: none;
+    color: $grey-400 !important;
+}
+.hasInput::before {
+    content: none !important;
+    color: $grey-400 !important;
+}
+
 
 input.value-entered {
     color: $grey-600;

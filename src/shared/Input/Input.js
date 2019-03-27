@@ -32,6 +32,10 @@ const Input = React.forwardRef((props, ref) => {
         );
     }
 
+    if(props.value){
+        classes.push('hasInput');
+    }
+
     inputType = (
         <input
             ref={ref}
