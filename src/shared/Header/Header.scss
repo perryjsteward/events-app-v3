@@ -1,0 +1,27 @@
+@import '../../styles/spacing';
+@import '../../styles/colors';
+@import '../../styles/typography';
+
+header {
+    width: 100%;
+    background: white;
+    // height: $space-700;
+    position: fixed;
+    top: 0;
+    z-index: 1000000;
+    border-bottom: 1px solid $grey-100;
+    box-shadow: 0 5px 5px -5px $grey-100;
+}
+
+header .title {
+    margin: $space-400;
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    color: $primary;
+    font-size: $heading-200;
+}
+
+.header__bumper {
+    width: 100%;
+    height: 72px;
+}

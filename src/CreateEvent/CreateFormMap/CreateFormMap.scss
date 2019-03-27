@@ -1,38 +1,43 @@
 @import '../../styles/spacing';
 
-.create-form__map {
-    height: 100%;
-    width: 40%;
-    position: fixed !important;
-    top: 0;
-    right: 0;
-}
-
-.map__input-field {
-    margin: $space-600;
-    height: 100%;
-    width: calc(40% - 100px);
-    position: fixed !important;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-}
-
-@media only screen and (max-width: 900px) { 
+@media only screen and (min-width: 830px) { 
     .create-form__map {
-        width: 35% !important;
+        height: 100%;
+        width: 40%;
+        position: fixed !important;
+        top: 0;
+        right: 0;
+        box-sizing : border-box;
     }
+
     .map__input-field {
-        width: calc(40% - 80px) !important;
-        margin-right: $space-400;
+        margin: $space-600;
+        // height: 100%;
+        // width: 100% !important;
+        // position: relative !important;
+        // top: $space-700;
+        // right: 0;
+        z-index: 10000;
     }
 }
+
 
 @media only screen and (max-width: 830px) { 
     .create-form__map{
-        display: none;
+        width: 100% !important; 
+        height: $space-1100;
+        margin-bottom: 100px;
     }
     .map__input-field{
-        display: none;
+        // display: none;
+        margin: auto;
+        padding: $space-600;
+        width: $space-1100 !important;
+    }
+}
+
+@media only screen and (max-width: 470px) { 
+    .map__input-field {
+        width: 100% !important;
     }
 }

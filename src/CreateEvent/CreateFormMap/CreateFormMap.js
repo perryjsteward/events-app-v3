@@ -62,16 +62,18 @@ export default class CreateFormMap extends Component {
                 <Script 
                     onLoad={this.handleScriptLoad} 
                     url='https://maps.googleapis.com/maps/api/js?key=AIzaSyBY_d1jFhjDOyMnTa4eKfPMhTqu8H8I9sQ&libraries=places'/>
-                <div className="map__input-field">
-                    <Input 
-                        id="autocomplete"
-                        onChange={(e) => this.handleUserInput(e)} //need to smartly remove this
-                        icon="fa-search"
-                        size="medium"
-                        type="text"
-                        placeholder="Search street address" />
+               
+                <div id="map" className="create-form__map bg-grey-100">
+                    <div className="map__input-field">
+                        <Input 
+                            id="autocomplete"
+                            onChange={(e) => this.handleUserInput(e)} //need to smartly remove this
+                            icon="fa-search"
+                            size="medium"
+                            type="text"
+                            placeholder="Search street address" />
+                    </div>
                 </div>
-                <div id="map" className="create-form__map bg-grey-100"></div>
             </React.Fragment>
            
         )

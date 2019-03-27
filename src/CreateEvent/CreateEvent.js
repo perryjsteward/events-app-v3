@@ -5,7 +5,7 @@ import CreateFormMap from  './CreateFormMap/CreateFormMap';
 import CreateForm from './CreateForm/CreateForm';
 
 // styling
-import './CreateEvent.css';
+import './CreateEvent.scss';
 
 const CreateEvent = () => {
   return (
