@@ -51,18 +51,61 @@ input{
 }
 
 
-input[type=date]{
+input{
     color: $grey-400;
+    -webkit-appearance: none !important;
+    -moz-appearance:    none !important;
+    appearance:         none !important;
 }
-input[type=date]::after{
+
+
+input[type=date]{
     content: '';
+    color: transparent;
+    transition-property: border, background-color;
+
+    &::before {
+        content: 'Select a date';
+        color: $grey-400;
+    }
+    &::after {
+        content: '';
+        color: $grey-400;
+    }
+    &:focus {
+        content: none;
+        color: $grey-400 !important;
+    }
+    &:focus::before {
+        content: none;
+        color: $grey-400 !important;
+    }
 }
 
 input[type=time]{
     color: $grey-400;
 }
-input[type=time]::after{
+input[type=time]{
     content: '';
+    color: transparent;
+    transition-property: border, background-color;
+
+    &::before {
+        content: 'Select a time';
+        color: $grey-400;
+    }
+    &::after {
+        content: '';
+        color: $grey-400;
+    }
+    &:focus {
+        content: none;
+        color: $grey-400 !important;
+    }
+    &:focus::before {
+        content: none;
+        color: $grey-400 !important;
+    }
 }
 
 input.value-entered {
@@ -96,7 +139,7 @@ label {
 }
 
 
-.form-control{
+.form-control {
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
@@ -139,4 +182,18 @@ label {
         border-color: $grey-500 !important;
         color: $grey-600;
     }
+}
+
+
+@media only screen and (max-width: 480px) { 
+    .form-control {
+        display: block;
+
+        .inline {
+            width: 100%;
+            margin-left: 0px;
+            margin-right: 0px;  
+        }
+    }
+
 }

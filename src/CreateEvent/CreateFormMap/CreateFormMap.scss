@@ -21,6 +21,13 @@
     }
 }
 
+@media only screen and (max-width: 900px) { 
+    .create-form__map{
+        width: 45% !important; 
+    }
+}
+
+
 
 @media only screen and (max-width: 830px) { 
     .create-form__map{

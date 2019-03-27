@@ -47,7 +47,7 @@ export default class CreateForm extends Component {
         {
             name: 'start_time',
             type: 'time',
-            label: 'End Time',
+            label: 'Start Time',
             group: 1,
             position: 2,
             value: '',
