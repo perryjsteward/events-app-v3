@@ -39,6 +39,7 @@ export default class CreateForm extends Component {
             group: 1,
             position: 1,
             hint: 'The date must be in the future',
+            min: new Date().toISOString().split('T')[0],
             value: '',
             validation: {
                 required: true,
@@ -67,6 +68,7 @@ export default class CreateForm extends Component {
             group: 2,
             position: 1,
             value: '',
+            min: new Date().toISOString().split('T')[0],
             validation: {
                 required: false,
                 atLeastToday: true, //not implemented yet
@@ -126,6 +128,7 @@ export default class CreateForm extends Component {
             type={el.type} 
             label={el.label}
             hint={el.hint}
+            min={el.min}
             hasStarted={el.hasStarted}
             isValid={el.isValid}
             placeholder={el.placeholder}/>
