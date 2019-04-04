@@ -1,6 +1,7 @@
 
 export const formRules = {
     isRequired: 'REQUIRED',
+    isAPhoto: 'IS_A_PHOTO',
     isAtLeastNow: 'IS_AT_LEAST_NOW',
     isAtLeastToday: 'IS_AT_LEAST_TODAY',
     isGreaterThanOrEqualToStartDate: 'IS_GREATER_THAN_OR_EQUAL_TO_START_DATE',
@@ -9,7 +10,7 @@ export const formRules = {
 
 export const inputValidation = (value, rules, form) => {
     let isValid = true;
-    console.log(rules)
+    
     if (!rules) {
         return true;
     }
@@ -21,6 +22,11 @@ export const inputValidation = (value, rules, form) => {
     if(rules[formRules.isAtLeastToday]) {
         var today = new Date().toISOString().split('T')[0];
         isValid = value >= today && isValid;
+    }
+
+    if(rules[formRules.isAPhoto]) {
+        let type = value.type ? value.type.split('/') : [];
+        isValid = type[0] === 'image' && isValid;
     }
 
     if(rules[formRules.isAtLeastNow]) {

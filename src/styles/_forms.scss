@@ -123,6 +123,15 @@ input[type=time]{
 
 }
 
+input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    z-index: -10;
+    left: -4px;
+    top: -4px;
+    opacity: 0
+}
+
 .hasInput {
     content: none;
     color: $grey-400 !important;
@@ -198,6 +207,12 @@ label {
     margin-left: $space-300;
 }
 
+.file-uploader__hint {
+    position: relative;
+    top: 10px !important;
+    margin-left: $space-300 !important;
+}
+
 .form__upload-control > button {
     border-color: $grey-400 !important;
     color: $grey-500;
@@ -205,6 +220,16 @@ label {
     &:active {
         border-color: $grey-500 !important;
         color: $grey-600;
+    }
+}
+
+.form__upload-wrapper {
+    position: relative;
+    // overflow: hidden;
+    display: inline-block;
+
+    button {
+        margin-left: 0px;
     }
 }
 

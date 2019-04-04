@@ -20,9 +20,9 @@ const btnTypes = {
 const Button = (props) => {
 
     const classes = [
-        ...((props.outline) ? ['outline'] : []),
-        ...((btnSizes[props.size]) ? [btnSizes[props.size]] : []),
-        ...((btnTypes[props.type]) ? [btnTypes[props.type]] : [])
+        props.outline ? 'outline' : '',
+        btnSizes[props.size] ? btnSizes[props.size] : '',
+        btnTypes[props.type] ? btnTypes[props.type] : ''
     ];
 
     return (
