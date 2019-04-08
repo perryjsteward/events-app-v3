@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import CreateFormControls from '../CreateFormControls/CreateFormControls';
-import { formRules, inputValidation, formValidation } from '../../utils/formUtils';
-import Input from '../../shared/Input/Input';
-import Upload from '../../shared/Upload/Upload';
+import { formRules, inputValidation, formValidation } from '../../_utils/formUtils';
+import Input from '../../_shared/Input/Input';
+import Upload from '../../_shared/Upload/Upload';
 import formInputs from './formInputs';
+
 
 import './CreateForm.scss';
 export default class CreateForm extends Component {
@@ -70,6 +71,10 @@ export default class CreateForm extends Component {
         );
   }
 
+  checkForm = () =>{
+      console.log(this.state)
+  }
+
   setUploadElement = (el) => {
     return (
         <Upload
@@ -81,15 +86,6 @@ export default class CreateForm extends Component {
             isValid={el.isValid}>
         </Upload>
     );
-  }
-
-  handleSubmit = () => {
-    let currForm = [ ...this.state.createForm ];
-    let formData = [];
-    currForm.forEach(el => {
-        if(el.value) formData[el.name] = el.value;
-    });
-    console.log(formData);
   }
 
   handleReset = () => {
@@ -145,7 +141,7 @@ export default class CreateForm extends Component {
                 {groupThreeInputs}
             </div>
             <CreateFormControls
-                onSubmit={this.handleSubmit}
+                onSubmit={() => this.props.onSubmit(this.state.createForm)}
                 onReset={this.handleReset}
                 isValid={this.state.formIsValid}>
             </CreateFormControls>

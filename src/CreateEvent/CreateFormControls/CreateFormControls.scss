@@ -1,5 +1,5 @@
-@import '../../styles/colors';
-@import '../../styles/spacing';
+@import '../../_styles/colors';
+@import '../../_styles/spacing';
 
 .create-form__controls__button-wrapper{
    float: right;
@@ -15,7 +15,7 @@
     background-color: white;
     color: white;
     text-align: center;
-    z-index: 10000000000000;
+    z-index: 500;
  }
 
  .create-form__controls-content {

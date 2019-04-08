@@ -1,7 +1,6 @@
 import React from 'react';
 import './CreateFormControls.scss';
-import Button from '../../shared/Button/Button';
-
+import Button from '../../_shared/Button/Button';
 
 const CreateFormControls = (props) => {
     

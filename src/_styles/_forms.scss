@@ -75,7 +75,7 @@ input[type=date]{
     transition-property: border, background-color;
 
     &::before {
-        content: 'Select a date';
+        content: 'What day';
         color: $grey-400;
     }
     &::after {
@@ -102,10 +102,11 @@ input[type=time]{
 input[type=time]{
     content: '';
     color: transparent;
+    overflow: hidden;
     transition-property: border, background-color;
 
     &::before {
-        content: 'Select a time';
+        content: 'What time';
         color: $grey-400;
     }
     &::after {
@@ -236,12 +237,30 @@ label {
 
 @media only screen and (max-width: 480px) { 
     .form-control {
-        display: block;
+        box-sizing: border-box !important;
+        // display: block;
 
         .inline {
-            width: 100%;
-            margin-left: 0px;
-            margin-right: 0px;  
+            box-sizing: border-box !important;
+            width: calc(50% - 10px);
+        //     margin-left: 0px;
+        //     margin-right: 0px;  
+        }
+
+        input[type=time]{
+        
+            &::before {
+                content: 'Time';
+                color: $grey-400;
+            }
+        }
+
+        input[type=date]{
+        
+            &::before {
+                content: 'Date';
+                color: $grey-400;
+            }
         }
     }
 

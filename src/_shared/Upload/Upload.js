@@ -1,12 +1,7 @@
 import React from 'react';
-import Button from '../../shared/Button/Button';
+import Button from '../../_shared/Button/Button';
 
 const Upload = (props) => {
-
-    // TBC:
-    // 1. turn back to stateless Component
-    // 2. have all state come through as props
-    // 3. return file to form
 
     let fileInput = null;
     let inputHint = '';
@@ -54,6 +49,7 @@ const Upload = (props) => {
         <div className="form-control form__upload-control">
             <div className="form__upload-wrapper">
                 {button}
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 {uploadHint}
                 {input}
                 {inputHint}

@@ -1,4 +1,4 @@
-import { formRules } from '../../utils/formUtils';
+import { formRules } from '../../_utils/formUtils';
 
 export const formInputs = [
     {
@@ -11,7 +11,7 @@ export const formInputs = [
             [formRules.isRequired]: false,
             [formRules.isAPhoto]: true,
         },
-        isValid: false
+        isValid: true
     },
     {
         name: 'name',

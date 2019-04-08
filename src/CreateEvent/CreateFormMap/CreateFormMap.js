@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import Script from 'react-load-script';
 import './CreateFormMap.scss';
-import Input from  '../../shared/Input/Input';
+import Input from  '../../_shared/Input/Input';
 // /* global google */
 
 export default class CreateFormMap extends Component {
