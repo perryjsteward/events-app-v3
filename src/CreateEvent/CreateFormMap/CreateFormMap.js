@@ -4,8 +4,11 @@ import Script from 'react-load-script';
 import './CreateFormMap.scss';
 import Input from  '../../_shared/Input/Input';
 // /* global google */
+// state
+import * as actions from '../../_store/actions';
+import { connect } from 'react-redux';
 
-export default class CreateFormMap extends Component {
+class CreateFormMap extends Component {
 
     state = {
         isLoading: false,
@@ -36,6 +39,7 @@ export default class CreateFormMap extends Component {
             },
             isLoading: true
         });
+        this.props.onSetLocation(this.state.selectedPlace);
         this.handleMapLoad();
     }
 
@@ -54,7 +58,8 @@ export default class CreateFormMap extends Component {
         new google.maps.Marker({position: location, map: map});
     }
 
-    handleUserInput = (e) => { }
+    handleUserInput = e => { 
+    }
  
     render() {
         return (
@@ -80,3 +85,20 @@ export default class CreateFormMap extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        createError: state.createError,
+        imageError: state.imageError,
+        imagePath: state.imagePath,
+        location: state.location
+    };
+  };
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+        onSetLocation: (location) => dispatch( actions.setSelectedLocation(location) )
+    };
+  };
+  
+  export default connect( mapStateToProps, mapDispatchToProps )(CreateFormMap);

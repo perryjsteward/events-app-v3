@@ -5,15 +5,18 @@ import Input from '../../_shared/Input/Input';
 import Upload from '../../_shared/Upload/Upload';
 import formInputs from './formInputs';
 
+// state
+import * as actions from '../../_store/actions';
+import { connect } from 'react-redux';
 
 import './CreateForm.scss';
-export default class CreateForm extends Component {
+class CreateForm extends Component {
   state = {
       createForm: formInputs,
       formIsValid: false
   }
 
-  handleUserInput = (value, name) => {
+  validateUserInput = (value, name) => {
     let currForm = [ ...this.state.createForm ]; // create a copy
     // update element and check validitiy
     let newForm = currForm.map(el => {
@@ -27,6 +30,13 @@ export default class CreateForm extends Component {
         }
         return el;
     })
+
+    // upload image - might want to move this later
+    const found = newForm.find(el => el.name === 'upload_file');
+    if(name === 'upload_file' && value && found.isValid){
+        this.props.onImageUpload(value);
+    }
+
     // set new form and check form validity
     this.setState({ 
         createForm: newForm,
@@ -39,7 +49,7 @@ export default class CreateForm extends Component {
         <Input
             key={el.name}
             value={el.value}
-            onChange={(e) => this.handleUserInput(e.target.value, el.name)}
+            onChange={(e) => this.validateUserInput(e.target.value, el.name)}
             required={el.validation[formRules.isRequired]}
             type={el.type} 
             label={el.label}
@@ -71,22 +81,32 @@ export default class CreateForm extends Component {
         );
   }
 
-  checkForm = () =>{
-      console.log(this.state)
-  }
-
   setUploadElement = (el) => {
     return (
         <Upload
-            // acceptedTypes={el.acceptedTypes}
-            fileName={el.value.name}
+            acceptedTypes={el.acceptedTypes}
+            file={el.value}
             hint={el.hint}
-            handleUpload={(e) => this.handleUserInput(e, el.name)}
+            validateFile={(e) => this.validateUserInput(e, el.name)}
             hasStarted={el.hasStarted}
             isValid={el.isValid}>
         </Upload>
     );
   }
+
+  //check to see if image was uploaded with success
+  isFormValid = () => {
+    // return false;
+    const found = this.state.createForm.find(el => el.name === 'upload_file');
+    if(!found.value && this.state.formIsValid) {
+        return true;
+    }
+
+    if(found.value && this.props.hasImageUploaded && this.state.formIsValid){
+        return true
+    }
+    return false;
+  };
 
   handleReset = () => {
     let currForm = [ ...this.state.createForm ];
@@ -143,9 +163,24 @@ export default class CreateForm extends Component {
             <CreateFormControls
                 onSubmit={() => this.props.onSubmit(this.state.createForm)}
                 onReset={this.handleReset}
-                isValid={this.state.formIsValid}>
+                isValid={this.isFormValid()}>
             </CreateFormControls>
         </div>
     )
   }
 }
+
+const mapStateToProps = state => {
+    return {
+        error: state.imageUploadError,
+        hasImageUploaded: state.hasImageUploaded,
+    };
+};
+  
+const mapDispatchToProps = dispatch => {
+    return {
+        onImageUpload: (image) => dispatch( actions.uploadImage(image) )
+    };
+};
+  
+export default connect( mapStateToProps, mapDispatchToProps )(CreateForm);

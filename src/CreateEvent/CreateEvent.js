@@ -18,15 +18,22 @@ const CreateEvent = (props) => {
       let formData = [];
       currForm.forEach(el => {
           if(el.value) formData[el.name] = el.value;
+          if(el.name === 'upload_file' && el.value) formData[el.name] = props.imagePath;
       });
-      props.onCreateEvent(formData);
+      // add location details
+      if(props.selectedLocation){
+          formData['location'] = props.selectedLocation;
+      }
+      // could do this better
+      console.log(formData)
+      // props.onCreateEvent(formData);
     }
    
     return  (
       <div className="create-event__row">
         <CreateForm 
           error={props.error}
-          onSubmit={(event) => handleSubmit(event)}>
+          onSubmit={event => handleSubmit(event)}>
         </CreateForm>
         <CreateFormMap></CreateFormMap>
       </div>
@@ -34,16 +41,19 @@ const CreateEvent = (props) => {
 
 };
 
-
 const mapStateToProps = state => {
   return {
-      error: state.createFormError
+      createError: state.createError,
+      imageError: state.imageError,
+      imagePath: state.imagePath,
+      selectedLocation: state.selectedLocation
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-      onCreateEvent: (event) => dispatch( actions.createEvent(event) )
+      onCreateEvent: (event) => dispatch( actions.createEvent(event) ),
+      onImageUpload: (image) => dispatch( actions.uploadImage(image) )
   };
 };
 

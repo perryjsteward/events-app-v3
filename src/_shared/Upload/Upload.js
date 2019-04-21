@@ -1,15 +1,21 @@
 import React from 'react';
 import Button from '../../_shared/Button/Button';
 
+// state
+import { connect } from 'react-redux';
+
 const Upload = (props) => {
 
     let fileInput = null;
     let inputHint = '';
     let type = '';
-    let helperText = "Upload a photo";
+    const acceptedTypes = props.acceptedTypes ? props.acceptedTypes.join('') : null;
 
-    let uploadHint = props.fileName ? props.fileName : helperText;
-    let acceptedTypes = props.acceptedTypes ? props.acceptedTypes.join('') : null;
+    let uploadHint = props.file ? props.file.name : 'Upload a photo';
+    uploadHint = props.isUploading ? 'Uploading...' : uploadHint;
+    uploadHint = props.imageError ? 'Something went wrong :(' : uploadHint;
+
+    const handleClick = () => fileInput.click();
 
     if(props.hint && !props.isValid && props.hasStarted){
         inputHint = (
@@ -22,11 +28,7 @@ const Upload = (props) => {
         type = 'warning'
     }
 
-    let handleClick = () => {
-        fileInput.click();
-    }
-
-    let button = (
+    const button = (
         <Button
             type={type}
             onClick={handleClick}
@@ -36,14 +38,14 @@ const Upload = (props) => {
         </Button>
     )
 
-    let input = (
+    const input = (
         <input 
-        onChange={(e) => props.handleUpload(e.target.files[0])}
-        ref={(input) => { fileInput = input }}
-        accept={acceptedTypes}
-        type="file" 
-        name="myfile" />
-    )
+            onChange={(e) => props.validateFile(e.target.files[0])}
+            ref={(input) => { fileInput = input }}
+            accept={acceptedTypes}
+            type="file" 
+            name="myfile" />
+    )  
 
     return (
         <div className="form-control form__upload-control">
@@ -59,4 +61,12 @@ const Upload = (props) => {
 
 }
 
-export default Upload;
+const mapStateToProps = state => {
+    return {
+        error: state.imageError,
+        isUploading: state.isImageUploading,
+    };
+  };
+
+export default connect( mapStateToProps )(Upload);
+
