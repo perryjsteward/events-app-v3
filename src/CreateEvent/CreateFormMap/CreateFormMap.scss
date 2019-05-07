@@ -39,7 +39,7 @@
         height: $space-1100;
         margin-bottom: 100px;
         position: relative;
-        top: -200px;
+        top: -180px;
     }
     .map__input-field{
         // display: none;
@@ -55,5 +55,7 @@
 @media only screen and (max-width: 470px) { 
     .map__input-field {
         width: 100% !important;
+        padding-left: $space-500;
+        padding-right: $space-500;
     }
 }

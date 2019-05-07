@@ -1,0 +1,26 @@
+@import '../../_styles/_spacing.scss';
+@import '../../_styles/_colors.scss';
+@import '../../_styles/_typography.scss';
+
+
+.event__controls-container {
+    position: absolute;
+    padding: $space-400;
+    width: 100%;
+    height: $space-700 + $space-200;
+    background: linear-gradient(
+        to top, 
+        transparent, 
+        rgba($grey-700, 0.3)
+    ) !important;
+}
+
+.event__view-controls {
+    font-size: $text-500 !important;
+    color: white !important;
+    padding: $space-200;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

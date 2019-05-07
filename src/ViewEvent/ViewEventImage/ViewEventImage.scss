@@ -1,0 +1,8 @@
+@import '../../_styles/_spacing.scss';
+@import '../../_styles/_colors.scss';
+
+.event__image-container {
+    width: 100%;
+    height: $space-1100;
+    background-color: $grey-200; 
+}

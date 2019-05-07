@@ -39,5 +39,11 @@
 @media only screen and (max-width: 480px) { 
     .create-form__content {
         width: 100%;
+        padding-right: $space-500;
+        padding-left: $space-500;
+    }
+
+    .create-form__content h4 {
+        margin-top: $space-500;
     }
 }

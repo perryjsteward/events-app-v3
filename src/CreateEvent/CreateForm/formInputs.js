@@ -1,4 +1,5 @@
 import { formRules } from '../../_utils/formUtils';
+import React from 'react';
 
 export const formInputs = [
     {
@@ -11,7 +12,8 @@ export const formInputs = [
             [formRules.isRequired]: false,
             [formRules.isAPhoto]: true,
         },
-        isValid: true
+        isValid: true,
+        ref: React.createRef()
     },
     {
         name: 'name',
@@ -23,7 +25,8 @@ export const formInputs = [
         validation: {
             [formRules.isRequired]: true,
         },
-        isValid: false
+        isValid: false,
+        ref: React.createRef()
     },
     {
         name: 'description',
@@ -34,7 +37,8 @@ export const formInputs = [
         validation: {
             [formRules.isRequired]: false,
         },
-        isValid: true
+        isValid: true,
+        ref: React.createRef()
     },
     {
         name: 'start_date',
@@ -49,7 +53,8 @@ export const formInputs = [
             [formRules.isRequired]: true,
             [formRules.isAtLeastToday]: true //not implemented yet
         },
-        isValid: false
+        isValid: false,
+        ref: React.createRef()
     },
     {
         name: 'start_time',
@@ -63,7 +68,8 @@ export const formInputs = [
             [formRules.isRequired]: false,
             [formRules.isAtLeastNow]: true //not implemented yet
         },
-        isValid: true
+        isValid: true,
+        ref: React.createRef()
     },
     {
         name: 'end_date',
@@ -77,7 +83,8 @@ export const formInputs = [
             [formRules.isRequired]: false,
             [formRules.isGreaterThanOrEqualStartDate]: true //not implemented yet
         },
-        isValid: true
+        isValid: true,
+        ref: React.createRef()
     },
     {
         name: 'end_time',
@@ -91,7 +98,8 @@ export const formInputs = [
             [formRules.isRequired]: false,
             [formRules.isGreaterThanOrEqualStartDateTime]: true,
         },
-        isValid: true
+        isValid: true,
+        ref: React.createRef()
     },
   ];
 

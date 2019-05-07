@@ -4,7 +4,7 @@
 .create-form__controls__button-wrapper{
    float: right;
    height: 100%;
-   padding-bottom: $space-500;
+   padding-bottom: $space-400;
 }
 
 .create-form__controls-container {
@@ -16,6 +16,8 @@
     color: white;
     text-align: center;
     z-index: 1500;
+    border-top: 1px solid $grey-200;
+    box-shadow: 0 -5px 5px -5px $grey-100;
  }
 
  .create-form__controls-content {
@@ -23,8 +25,6 @@
     margin-right: $space-600;
     margin-left: $space-600;
     padding: $space-400 0;
-    border-top: 1px solid $grey-100;
-    box-shadow: 0 -5px 5px -5px $grey-100;
  }
 
  @media only screen and (max-width: 900px) { 
@@ -38,4 +38,8 @@
         width: 100%;
      }
 
+   .create-form__controls-content {
+      margin-right: $space-500;
+      margin-left: $space-500;
+   }
 }

@@ -1,0 +1,50 @@
+@import '../../_styles/spacing';
+@import '../../_styles/colors';
+@import '../../_styles/typography';
+
+
+.alert__container {
+    width: 100%;
+    min-height: 56.94px;
+    display: inline-flex;
+    // border: 1px solid $grey-300;
+    // border-left: 5px solid $primary-500;
+    // border-radius: $space-300;
+    // margin-top: 20px;
+    margin: $space-300 0px $space-200 0px !important;
+}
+
+.alert__content-container {
+    padding: $space-300;
+    min-height: 100% !important;
+    width: 100% !important;
+    border-top: 1px solid $grey-300;
+    border-bottom: 1px solid $grey-300;
+    border-right: 1px solid $grey-300;
+    border-top-right-radius: $space-200;
+    border-bottom-right-radius: $space-200;
+    display: block;
+}
+
+.alert__icon-container {
+    border-top-left-radius: $space-200;
+    border-bottom-left-radius: $space-200;
+    background-color: $primary-500;
+    width: $space-300;
+    display: inline-flex;
+}
+
+.alert__icon {
+    width: 5px;
+    margin: auto;
+    font-size: $text-400;
+    // color: $primary-500;
+    color: white;
+    display: block !important;
+    position: relative;
+}
+
+.alert__title {
+    display: block;
+    font-weight: bold;
+}

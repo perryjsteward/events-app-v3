@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import CreateEvent from './CreateEvent/CreateEvent';
+
+// shared
 import Spinner from './_shared/Spinner/Spinner';
 
-// import Header from './_shared/Header/Header';
+// views
+import CreateEvent from './CreateEvent/CreateEvent';
+// import ViewEvent from './ViewEvent/ViewEvent';
 
 // Store related classes
 import {Provider} from 'react-redux';
@@ -19,8 +22,8 @@ class App extends Component {
     return (
         <Provider store={store}>
           <Spinner></Spinner>
-          {/* <Header></Header> */}
           <CreateEvent></CreateEvent>
+          {/* <ViewEvent></ViewEvent> */}
         </Provider>
     );
   }

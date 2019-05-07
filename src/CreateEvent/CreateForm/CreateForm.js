@@ -3,6 +3,7 @@ import CreateFormControls from '../CreateFormControls/CreateFormControls';
 import { formRules, inputValidation, formValidation } from '../../_utils/formUtils';
 import Input from '../../_shared/Input/Input';
 import Upload from '../../_shared/Upload/Upload';
+import Alert from '../../_shared/Alert/Alert';
 import formInputs from './formInputs';
 
 // state
@@ -13,7 +14,8 @@ import './CreateForm.scss';
 class CreateForm extends Component {
   state = {
       createForm: formInputs,
-      formIsValid: false
+      formIsValid: false,
+      hasTriedSubmission: false
   }
 
   validateUserInput = (value, name) => {
@@ -47,6 +49,7 @@ class CreateForm extends Component {
   setInputElement = (el) => {
     let element = (
         <Input
+            ref={el.ref}
             key={el.name}
             value={el.value}
             onChange={(e) => this.validateUserInput(e.target.value, el.name)}
@@ -55,6 +58,7 @@ class CreateForm extends Component {
             label={el.label}
             hint={el.hint}
             min={el.min}
+            hasTriedSubmission={this.state.hasTriedSubmission}
             hasStarted={el.hasStarted}
             isValid={el.isValid}
             placeholder={el.placeholder}/>
@@ -125,6 +129,35 @@ class CreateForm extends Component {
     });
   }
 
+  setAlertElement = () => {
+      if(this.props.imageError || this.props.createError){
+          return <Alert></Alert>;
+      } else {
+          return '';
+      }
+  }
+
+  onSubmit = () => {
+    if(this.isFormValid()){
+        this.props.onSubmit(this.state.createForm)
+    } else {
+        this.setState({
+            hasTriedSubmission: true
+        });
+        this.focusOnInput();
+    }
+  }
+
+  focusOnInput = () => {
+    let currForm = [ ...this.state.createForm ];
+    let element = currForm.filter(el => {
+        return el.validation[formRules.isRequired] && !el.isValid;
+    })[0];
+    if(element){
+        element.ref.current.focus();
+    }
+  }
+
   render() {
     let currForm = [ ...this.state.createForm ];
 
@@ -148,20 +181,22 @@ class CreateForm extends Component {
         allInputs.filter(el => el.group === 2)
     );
 
+    let alertElement = this.setAlertElement();
+
 
     return (
         <div className='create-form__container'>
             <div className="create-form__content">
                 <h4 onClick={this.checkForm}>Create an Event</h4>
                 <p>Pop your event information here and get your free page to share with friends and family.</p>
-                <br/>
+                {alertElement}
                 {uploadElement}
                 {groupOneInputs}
                 {groupTwoInputs}
                 {groupThreeInputs}
             </div>
             <CreateFormControls
-                onSubmit={() => this.props.onSubmit(this.state.createForm)}
+                onSubmit={() => this.onSubmit()}
                 onReset={this.handleReset}
                 isValid={this.isFormValid()}>
             </CreateFormControls>
@@ -172,7 +207,8 @@ class CreateForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        error: state.imageUploadError,
+        imageError: state.imageUploadError,
+        createError: state.createError,
         hasImageUploaded: state.hasImageUploaded,
     };
 };

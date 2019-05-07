@@ -26,7 +26,7 @@ const CreateEvent = (props) => {
       }
       // could do this better
       console.log(formData)
-      // props.onCreateEvent(formData);
+      props.onCreateEvent(formData);
     }
    
     return  (

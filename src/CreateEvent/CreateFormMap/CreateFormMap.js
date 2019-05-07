@@ -30,23 +30,32 @@ class CreateFormMap extends Component {
     }
 
     handlePlaceSelect = () => {
+        let selectedPlace = {};
         const place = this.autocomplete.getPlace();
-        this.setState({
-            selectedPlace: {
+        if(place.name){
+            selectedPlace = {
                 address: place.formatted_address,
                 lat: place.geometry.location.lat(),
                 lng: place.geometry.location.lng()
-            },
-            isLoading: true
+            }
+        }
+        this.setState({
+            selectedPlace: selectedPlace
         });
         this.props.onSetLocation(this.state.selectedPlace);
         this.handleMapLoad();
     }
 
     handleMapLoad = () => {
+        let lat = null;
+        let lng = null;
+        if(this.state.selectedPlace){
+            lat = this.state.selectedPlace.lat; 
+            lng = this.state.selectedPlace.lng;
+        }
         let location = {
-            lat: this.state.selectedPlace.lat, 
-            lng: this.state.selectedPlace.lng, 
+            lat: lat, 
+            lng: lng, 
         };
         let map = new google.maps.Map(document.getElementById('map'), {
             center: location,
@@ -55,11 +64,10 @@ class CreateFormMap extends Component {
             mapTypeControl: false,
             streetViewControl: false,
         });
-        new google.maps.Marker({position: location, map: map});
+        new google.maps.Marker({position: location, map: map}); 
     }
 
-    handleUserInput = e => { 
-    }
+    handleUserInput = e => {}
  
     render() {
         return (

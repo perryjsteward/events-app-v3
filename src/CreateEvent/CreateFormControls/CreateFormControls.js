@@ -15,7 +15,7 @@ const CreateFormControls = (props) => {
                         Reset
                     </Button>
                     <Button 
-                        disabled={!props.isValid}
+                        // disabled={!props.isValid}
                         onClick={props.onSubmit}
                         type="primary" 
                         size="medium">

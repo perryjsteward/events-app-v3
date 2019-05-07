@@ -19,7 +19,7 @@ const Input = React.forwardRef((props, ref) => {
         );
     }
 
-    if(props.hint && !props.isValid && props.hasStarted){
+    if(props.hint && !props.isValid && (props.hasStarted || props.hasTriedSubmission)){
         inputHint = (
             <div className="input__hint">{props.hint}</div>
         );
@@ -36,9 +36,10 @@ const Input = React.forwardRef((props, ref) => {
         classes.push('hasInput');
     }
 
-    if(!props.isValid){
+    if(!props.isValid && props.hasTriedSubmission){
         classes.push('invalid');
     }
+
 
     inputType = (
         <input
@@ -50,8 +51,7 @@ const Input = React.forwardRef((props, ref) => {
             type={props.type}
             min={props.min}
             placeholder={props.placeholder}
-            disabled={props.disabled}
-            required={props.required}>
+            disabled={props.disabled}>
             {props.children}
         </input>
     );

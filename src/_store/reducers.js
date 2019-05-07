@@ -18,14 +18,14 @@ const createEventStart = (state, action) => {
 const createEventSuccess = (state, action) => {
   return updateObject(state, { 
     isLoading: false,
-    event: action.event
+    event: action.event,
   })
 }
 
 const createEventFail = (state, action) => {
   return updateObject(state, { 
     isLoading: false,
-    createError: action
+    createError: action.error
   })
 }
 
@@ -49,7 +49,7 @@ const uploadImageFail = (state, action) => {
   return updateObject(state, { 
     isImageUploading: false,
     hasImageUploaded: false,
-    imageError: action
+    imageError: action.error
   })
 }
 

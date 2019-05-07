@@ -11,10 +11,11 @@ input{
     border: 1px solid $grey-300;
     color: $grey-600;
 
-    font-size: $text-400;
+    font-size: $text-300;
     padding: $space-400;
     border-radius: $space-100;
-    margin-bottom: $space-600 !important;
+    margin-bottom: $space-500 + $space-200 !important;
+    // margin-bottom: $space-500 !important;
     margin-top: $space-200 !important;
 
      // default actions
@@ -92,7 +93,7 @@ input[type=date]{
     }
     .hasInput::before {
         content: none !important;
-        color: $grey-400 !important;
+        color: $grey-600 !important;
     }
 }
 
@@ -135,11 +136,11 @@ input[type=file] {
 
 .hasInput {
     content: none;
-    color: $grey-400 !important;
+    color: $grey-600 !important;
 }
 .hasInput::before {
     content: none !important;
-    color: $grey-400 !important;
+    color: $grey-600 !important;
 }
 
 
@@ -150,7 +151,8 @@ input.value-entered {
 label {
     width: 100%;
     color: $grey-600;
-    font-size: $text-500;
+    font-size: $text-400;
+    font-weight: normal;
 }
 
 .input__label-required {
@@ -200,7 +202,9 @@ label {
 }
 
 .form__upload-control {
-    margin-bottom: $space-600;
+    margin-top: $space-500;
+    margin-bottom: $space-500 + $space-200 !important;
+    // margin-bottom: $space-500;
 }
 
 .form__upload-hint {
@@ -268,8 +272,8 @@ label {
 
 .input__hint {
     position: relative;
-    top: -30px;
-    line-height: 0px;
+    top: -26px;
+    // line-height: 0px;
     font-size: $text-200;
     color: $grey-500;
 }
