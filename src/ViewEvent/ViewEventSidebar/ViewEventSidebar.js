@@ -3,7 +3,7 @@ import './ViewEventSidebar.scss';
 import ViewEventMap from '../ViewEventMap/ViewEventMap';
 import Button from '../../_shared/Button/Button';
 
-const ViewEventSidebar = () => {
+const ViewEventSidebar = (props) => {
 
     return (
         <div className="sidebar__container">
@@ -21,6 +21,7 @@ const ViewEventSidebar = () => {
                         <p>54 going</p>
                     </div>
                     <Button
+                        onClick={() => props.onSave()}
                         type="primary" 
                         size="small">
                         Add to calendar

@@ -37,9 +37,19 @@
     top: -15px;
     left: -33px;
     opacity: 1 !important;
+    pointer-events: auto;
 }
+
 .event__controls-icon__container { 
     display: inline-block;
+
+    &:hover {
+        cursor: pointer;
+
+        .event__controls-icon__bg {
+            opacity: 0.7;
+        }
+    }
 }
 .event__controls-icon__bg {
     display: inline-block;
@@ -58,12 +68,6 @@
     width: 45px;
     height: 45px; 
     text-align: center;
-    &:hover {
-        cursor: pointer;
-        opacity: 0.7;
-    }
 
-    &:active {
-        opacity: 0.7;
-    }
+
 }

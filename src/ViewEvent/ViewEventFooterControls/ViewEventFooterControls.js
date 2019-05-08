@@ -2,7 +2,7 @@ import React from 'react';
 import './ViewEventFooterControls.scss';
 import Button from '../../_shared/Button/Button';
 
-const ViewEventFooterControls = () => {
+const ViewEventFooterControls = (props) => {
     return (
         <div className="view-form__controls-container">
             <div className="view-form__controls-content">
@@ -12,6 +12,7 @@ const ViewEventFooterControls = () => {
                         <p>54 going</p>
                     </div>
                     <Button
+                        onClick={() => props.onSave()}
                         type="primary" 
                         size="medium">
                         Add to calendar
