@@ -19,13 +19,15 @@ const createEventSuccess = (state, action) => {
   return updateObject(state, { 
     isLoading: false,
     event: action.event,
+    createSuccess: action.createSuccess
   })
 }
 
 const createEventFail = (state, action) => {
   return updateObject(state, { 
     isLoading: false,
-    createError: action.error
+    createError: action.error,
+    createSuccess: action.createSuccess
   })
 }
 

@@ -1,0 +1,71 @@
+@import '../../_styles/_spacing.scss';
+@import '../../_styles/_colors.scss';
+@import '../../_styles/_typography.scss';
+
+.sidebar__container {
+    margin-left: 0;
+    margin-right: auto;
+    width: $space-1000 + $space-700;
+    margin-top: $space-400;
+    // background-color: blue
+}
+
+.sidebar__box {
+    margin: $space-400;
+    width: 100%;
+    border: 1px solid $grey-200;
+    // border-radius: $space-100;
+}
+
+.sidebar__map {
+    height: 300px;
+}
+
+.sidebar-date {
+    width: 100%;
+    padding: $space-400;
+
+    .far {
+        font-size: $text-300;
+        position: relative;
+        top: -1px;
+    }
+
+    p {
+        display: inline;
+        font-size: $text-300;
+        font-weight: normal;
+        margin-left: $space-300;
+    }
+}
+
+.sidebar-attending {
+    display: inline;
+    padding: $space-400;
+
+    .far {
+        font-size: $text-200;
+        position: relative;
+        top: -1px;
+    }
+
+    p {
+        display: inline;
+        font-size: $text-300;
+        // font-weight: normal;
+        margin-left: $space-300;
+    }
+}
+
+.sidebar__controls Button {
+    margin: $space-400;
+    display: inline;
+    position: relative;
+    right: -70px;
+}
+
+@media only screen and (max-width: 1200px) { 
+    .sidebar__container {
+        display: none;
+    }
+}

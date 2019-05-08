@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // shared
 import Spinner from './_shared/Spinner/Spinner';
 
 // views
 import CreateEvent from './CreateEvent/CreateEvent';
-// import ViewEvent from './ViewEvent/ViewEvent';
+import ViewEvent from './ViewEvent/ViewEvent';
 
 // Store related classes
 import {Provider} from 'react-redux';
@@ -20,11 +21,14 @@ class App extends Component {
 
   render() {
     return (
-        <Provider store={store}>
-          <Spinner></Spinner>
-          <CreateEvent></CreateEvent>
-          {/* <ViewEvent></ViewEvent> */}
-        </Provider>
+        <Router>
+          <Provider store={store}>
+            <Spinner></Spinner>
+            <Route path="/" exact component={CreateEvent} />
+            <Route path="/event/:eventId" component={ViewEvent} />
+          </Provider>
+        </Router>
+
     );
   }
 }

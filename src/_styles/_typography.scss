@@ -56,9 +56,24 @@ font-size: $text-100;
 line-height: $space-300;
 }
 
+
 p {
     line-height: $space-500;
     font-size: $text-300;
+
+    &.title {
+        font-size: $text-600;
+        font-weight: normal;
+        margin-top: $space-500;
+        margin-bottom: $space-100;
+    }
+
+    &.sub-title {
+        font-size: $text-300;
+        font-weight: bold;
+        margin-top: $space-500;
+        margin-bottom: $space-100;
+    }
 }
 
 * {

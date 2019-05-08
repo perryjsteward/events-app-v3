@@ -1,0 +1,72 @@
+
+@import '../../_styles/_spacing.scss';
+@import '../../_styles/_colors.scss';
+@import '../../_styles/_typography.scss';
+
+
+.view-form__controls__button-wrapper{
+    height: 100%;
+    padding-bottom: $space-400;
+    width: 100%;
+
+    Button {
+        float: right;
+    }
+
+    .view-form__attending {
+        float: left;
+    }
+ }
+ 
+ .view-form__controls-container {
+     position: fixed;
+     padding-bottom: $space-100;
+    //  padding-left: $space-400;
+     padding-right: $space-400;
+     bottom: 0;
+     width: 100%;
+     /* height: 100px; */
+     background-color: white;
+     color: white;
+     text-align: center;
+     z-index: 1500;
+     border-top: 1px solid $grey-200;
+     box-shadow: 0 -5px 5px -5px $grey-100;
+  }
+ 
+  .view-form__controls-content {
+     margin: 0 auto;
+     width: $space-1100 + $space-900;
+     padding: $space-300 0;
+  }
+ 
+ @media only screen and (max-width: 830px) { 
+ 
+    .view-form__controls-content {
+        width: 100%;
+    }
+ }
+
+@media only screen and (min-width: 1200px) { 
+    .view-form__controls-container {
+        display: none;
+    }
+}
+
+.view-form__attending {
+    display: inline;
+    padding: $space-400;
+
+    .far {
+        font-size: $text-200;
+        position: relative;
+        top: -1px;
+    }
+
+    p {
+        display: inline;
+        font-size: $text-300;
+        // font-weight: normal;
+        margin-left: $space-300;
+    }
+}

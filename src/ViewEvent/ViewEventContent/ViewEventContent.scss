@@ -1,0 +1,128 @@
+@import '../../_styles/_spacing.scss';
+@import '../../_styles/_colors.scss';
+@import '../../_styles/_typography.scss';
+
+
+.event__content-container {
+    margin-left: auto;
+    margin-right: 0;
+    width: $space-1100 + $space-1000;
+    padding: $space-400;
+    padding-right: $space-700;
+    margin-top: $space-400 !important;
+    margin-bottom: 80px;
+}
+
+.event__content-type {
+
+    .fas {
+        font-size: $text-100;
+        position: relative;
+        top: -1px;
+    }
+
+    p {
+        display: inline;
+        margin-left: $space-300;
+        font-size: $text-100;
+    }
+}
+
+.event__content-location {
+    margin-bottom: $space-200;
+
+    .fas {
+        font-size: $text-100;
+        position: relative;
+        top: -2px;
+    }
+
+    p {
+        display: inline;
+        font-size: $text-300;
+        margin-left: $space-300;
+    }
+}
+
+.event__content-date {
+
+    .far {
+        font-size: $text-100;
+        position: relative;
+        top: -1px;
+    }
+
+    p {
+        display: inline;
+        font-size: $text-300;
+        // font-weight: normal;
+        margin-left: $space-300;
+    }
+}
+
+.event__content-title {
+    h4 {
+        margin-top: $space-100;
+        margin-bottom: $space-300;
+        line-height: $space-600;
+    }
+}
+
+.event__content-description {
+    .title {
+        font-weight: bold;
+        margin-top: $space-500;
+        margin-bottom: $space-100;
+    }
+
+    p {
+        margin-top: 0px;
+    }
+}
+
+.event__content-map {
+    p {
+        margin-top: 0;
+    }
+
+    .map {
+        width: 100%;
+        height: 400px;
+    }
+}
+
+@media only screen and (max-width: 1300px) { 
+    .event__content-container {
+        margin: 0 auto;
+        width: $space-1100 + $space-900;
+        padding-right: $space-300;
+    }
+}
+
+@media only screen and (min-width: 1200px) { 
+    .event__content-map {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1200px) { 
+    .event__content-container {
+        margin: 0 auto;
+        padding-right: $space-400;
+    }
+}
+
+@media only screen and (max-width: 830px) { 
+    .event__content-container {
+        width: 100%;
+    }
+    
+}
+
+
+@media only screen and (max-width: 480px) { 
+    .event__content-container {
+        width: 100%;
+        margin-bottom: 80px;
+    }
+}

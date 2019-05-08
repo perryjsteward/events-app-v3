@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from "react-router-dom";
 
 // components
 import CreateFormMap from  './CreateFormMap/CreateFormMap';
@@ -25,8 +26,12 @@ const CreateEvent = (props) => {
           formData['location'] = props.selectedLocation;
       }
       // could do this better
-      console.log(formData)
       props.onCreateEvent(formData);
+    }
+
+    if(props.event && props.createSuccess) {
+      let id = btoa(props.event.id);
+      return <Redirect to={`/event/${id}`}></Redirect>
     }
    
     return  (
@@ -44,6 +49,8 @@ const CreateEvent = (props) => {
 const mapStateToProps = state => {
   return {
       createError: state.createError,
+      createSuccess: state.createSuccess,
+      event: state.event,
       imageError: state.imageError,
       imagePath: state.imagePath,
       selectedLocation: state.selectedLocation

@@ -25,25 +25,24 @@ export const createEvent = event => {
 };
 
 export const createEventStart = () => {
-  console.log("CREATE START")
   return { 
     type: types.CREATE_EVENT_START
   };
 }
 
 export const createEventSuccess = event => {
-  console.log("CREATE SUCCESS")
   return { 
     type: types.CREATE_EVENT_SUCCESS,
-    event: event
+    event: event,
+    createSuccess: true
   };
 }
 
 export const createEventError = error => {
-  console.log("CREATE ERROR")
   return { 
     type: types.CREATE_EVENT_ERROR, 
-    error: error 
+    error: error ,
+    createSuccess: false
   };
 }
 

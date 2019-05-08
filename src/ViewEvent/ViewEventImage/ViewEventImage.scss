@@ -5,4 +5,48 @@
     width: 100%;
     height: $space-1100;
     background-color: $grey-200; 
+    overflow: hidden;
+}
+
+.event__image-bg {
+    background: url(https://static.spin.com/files/130816_strokes-640x426.jpg);
+     /* repeat only the blurred one */
+    background-repeat: repeat;
+    filter: blur(8px);
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.event__image-main {
+    position: relative;
+    top: -493px;
+    background: url(https://static.spin.com/files/130816_strokes-640x426.jpg);
+     /* repeat only the blurred one */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (max-width: 1200px) { 
+    .event__image-container {
+        height: $space-1000 + $space-700;
+    }
+
+    .event__image-main {
+        top: -376px;
+    }
+}
+
+@media only screen and (max-width: 480px) { 
+    .event__image-container {
+        height: $space-1000;
+    }
+
+    .event__image-main {
+        top: -307px;
+    }
 }

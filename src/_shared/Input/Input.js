@@ -41,20 +41,43 @@ const Input = React.forwardRef((props, ref) => {
     }
 
 
-    inputType = (
-        <input
-            ref={ref}
-            id={props.id}
-            onChange={(event) => props.onChange(event)}
-            value={props.value}
-            className={classes.join(' ')}
-            type={props.type}
-            min={props.min}
-            placeholder={props.placeholder}
-            disabled={props.disabled}>
-            {props.children}
-        </input>
-    );
+    if(props.type !== 'textarea') {
+        inputType = (
+            <input
+                ref={ref}
+                id={props.id}
+                onChange={(event) => props.onChange(event)}
+                value={props.value}
+                className={classes.join(' ')}
+                type={props.type}
+                min={props.min}
+                placeholder={props.placeholder}
+                disabled={props.disabled}>
+                {props.children}
+            </input>
+        );
+    }
+
+    if(props.type === 'textarea') {
+        inputType = (
+            <textarea
+                rows='1'
+                ref={ref}
+                id={props.id}
+                onChange={(event) => props.onChange(event)}
+                value={props.value}
+                className={classes.join(' ')}
+                type={props.type}
+                min={props.min}
+                placeholder={props.placeholder}
+                disabled={props.disabled}>
+                {props.children}
+            </textarea>
+        );
+    }
+
+
+
 
     return (
         <React.Fragment>

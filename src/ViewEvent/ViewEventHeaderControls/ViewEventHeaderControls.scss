@@ -5,6 +5,7 @@
 
 .event__controls-container {
     position: absolute;
+    z-index: 100;
     padding: $space-400;
     width: 100%;
     height: $space-700 + $space-200;

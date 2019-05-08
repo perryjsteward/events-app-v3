@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Script from 'react-load-script';
 import './CreateFormMap.scss';
 import Input from  '../../_shared/Input/Input';
-// /* global google */
+/* global google */
 // state
 import * as actions from '../../_store/actions';
 import { connect } from 'react-redux';

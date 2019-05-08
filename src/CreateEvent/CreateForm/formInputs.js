@@ -30,7 +30,7 @@ export const formInputs = [
     },
     {
         name: 'description',
-        type: 'text',
+        type: 'textarea',
         label: 'Description',
         placeholder: 'e.g. This weekend i\'m going to host at mine...',
         value: '',
