@@ -185,3 +185,32 @@ button, .button {
         }
     }
 }
+
+
+
+@media only screen and (max-width: 330px) { 
+    button, .button {
+        // sizes
+        &.btn-lg {
+            font-size: $text-300;
+            padding: 14px 22px;  
+            border-radius: 4px;
+        }
+        &.btn-md {
+            font-size: $text-200;
+            padding: 10px 14px;
+            border-radius: 3px;
+        }
+        &.btn-sm {
+            font-size: $text-200;
+            padding: 10px 14px;
+            border-radius: 3px;
+        }
+        &.btn-xs {
+            font-size: $text-200;
+            padding: 10px 14px;
+            border-radius: 3px;
+        }
+    }
+    
+}

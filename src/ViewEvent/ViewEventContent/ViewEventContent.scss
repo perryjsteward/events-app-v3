@@ -69,10 +69,10 @@
 }
 
 .event__content-description {
-    .title {
+    .sub-title {
         font-weight: bold;
         margin-top: $space-500;
-        margin-bottom: $space-100;
+        margin-bottom: 0;
     }
 
     p {
@@ -109,12 +109,14 @@
     .event__content-container {
         margin: 0 auto;
         padding-right: $space-400;
+        margin-bottom: 80px;
     }
 }
 
 @media only screen and (max-width: 830px) { 
     .event__content-container {
         width: 100%;
+        margin-bottom: 80px;
     }
     
 }
@@ -124,5 +126,13 @@
     .event__content-container {
         width: 100%;
         margin-bottom: 80px;
+        margin-top: $space-200 !important;
+    }
+
+
+    .event__content-description {
+        .sub-title {
+            margin-top: $space-500;
+        }
     }
 }

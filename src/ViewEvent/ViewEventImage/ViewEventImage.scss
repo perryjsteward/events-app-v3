@@ -43,10 +43,10 @@
 
 @media only screen and (max-width: 480px) { 
     .event__image-container {
-        height: $space-1000;
+        height: $space-900 + $space-700;
     }
 
     .event__image-main {
-        top: -307px;
+        top: -261px;
     }
 }
