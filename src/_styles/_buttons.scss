@@ -214,3 +214,24 @@ button, .button {
     }
     
 }
+
+a {
+    background-color: transparent;
+    color: $primary;
+    text-decoration: none;
+
+    // type actions 
+    &:hover {
+        text-decoration: underline;
+    }
+    &:active {
+        color: $primary-500;
+    }
+    &:disabled {
+        color: rgba($primary, 0.3);
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

@@ -12,16 +12,21 @@ const Modal = (props) => {
              <div 
                 onClick={() => props.onCloseModal()}
                 className={`modal__container-backdrop`}>
-            </div>
-            <div className={`modal__content`}>
-                <span
-                    onClick={() => props.onCloseModal()} 
-                    className="fas fa-times modal__controls-icon">
-                </span> 
-                <div className="modal__content-child">
-                    {props.children}
+                <div className="modal__content-wrapper-1">
+                    <div className="modal__content-wrapper-2">
+                        <div className={`modal__content`}>
+                            <span
+                                onClick={() => props.onCloseModal()} 
+                                className="fas fa-times modal__controls-icon">
+                            </span> 
+                            <div className="modal__content-child">
+                                {props.children}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
         </div>
        
         
