@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import ViewEventHeaders from './ViewEventHeaders/ViewEventHeaders';
 import './ViewEvent.scss';
-
+import { withRouter } from 'react-router-dom';
 // state
 import * as actions from '../_store/actions';
 import { connect } from 'react-redux';
@@ -16,6 +16,7 @@ import ViewEventSave from './ViewEventSave/ViewEventSave';
 
 import Modal from '../_shared/Modal/Modal';
 
+
 class ViewEvent extends Component {
 
     state = {
@@ -24,11 +25,21 @@ class ViewEvent extends Component {
         metaTags: null
     }
 
+    constructor(props){
+        super(props)
+        this.props.history.listen((location, action) => {
+            if(this.props.match && this.props.match.params.eventId){
+                this.props.onReadEvent(this.props.match.params.eventId);
+            } 
+        });
+    }
+
     componentDidMount = () => {
         if(this.props.match && this.props.match.params.eventId){
             this.props.onReadEvent(this.props.match.params.eventId);
         } 
     }
+
 
     onShare = () => {
         this.setState({
@@ -120,4 +131,4 @@ const mapStateToProps = state => {
     };
   };
 
-export default connect( mapStateToProps, mapDispatchToProps )(ViewEvent);
+export default withRouter(connect( mapStateToProps, mapDispatchToProps )(ViewEvent));

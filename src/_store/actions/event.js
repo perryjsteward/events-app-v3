@@ -51,10 +51,8 @@ export const readEvent = id => {
   return dispatch => {
     dispatch(readEventStart());
     // needs updating
-    console.log(id)
     database.ref(`/events/-${id}`).once('value')
       .then(result => {
-        console.log(result.toJSON())
         if(result.val()) {
           dispatch(readEventSuccess({ 
             ...result.val()
