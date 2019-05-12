@@ -39,7 +39,7 @@ export const getDuration = event => {
 
     var duration = moment.duration(start_date_time.diff(end_date_time))
 
-    if(end_date_time.isSameOrAfter(start_date_time)){
+    if(end_date_time.isSameOrBefore(start_date_time)){
         return { 
             minutes: 30 
         };
