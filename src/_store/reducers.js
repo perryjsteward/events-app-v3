@@ -2,11 +2,7 @@ import * as actions from './actions';
 
 import { updateObject } from '../_utils/objectUtils';
 
-const initialState = {
-  isLoading: false,
-  event: {},
-  createFormError: {}
-}
+const initialState = {}
 
 // EVENTS
 const createEventStart = (state, action) => {
@@ -28,6 +24,29 @@ const createEventFail = (state, action) => {
     isLoading: false,
     createError: action.error,
     createSuccess: action.createSuccess
+  })
+}
+
+// READ EVENTS
+const readEventStart = (state, action) => {
+  return updateObject(state, { 
+    isLoading: true
+  })
+}
+
+const readEventSuccess = (state, action) => {
+  return updateObject(state, { 
+    isLoading: false,
+    event: action.event,
+    readSuccess: true
+  })
+}
+
+const readEventFail = (state, action) => {
+  return updateObject(state, { 
+    isLoading: false,
+    readError: action.error,
+    readSuccess: false
   })
 }
 
@@ -66,10 +85,14 @@ export default (state = initialState, action) => {
   switch(action.type) {
     // LOCATION
     case actions.SET_SELECTED_LOCATION: return setSelectedLocation(state, action);
-    // EVENTS
+    // CREATE EVENTS
     case actions.CREATE_EVENT_START: return createEventStart(state, action);
     case actions.CREATE_EVENT_SUCCESS: return createEventSuccess(state, action);
     case actions.CREATE_EVENT_ERROR: return createEventFail(state, action);
+     // READ EVENTS
+    case actions.READ_EVENT_START: return readEventStart(state, action);
+    case actions.READ_EVENT_SUCCESS: return readEventSuccess(state, action);
+    case actions.READ_EVENT_ERROR: return readEventFail(state, action);
     // IMAGES
     case actions.UPLOAD_IMAGE_START: return uploadImageStart(state, action);
     case actions.UPLOAD_IMAGE_SUCCESS: return uploadImageSuccess(state, action);

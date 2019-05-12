@@ -32,9 +32,13 @@ class CreateFormMap extends Component {
     handlePlaceSelect = () => {
         let selectedPlace = {};
         const place = this.autocomplete.getPlace();
+        let address = place.formatted_address;
+        if(place.name) {
+            address = place.name + ', ' + place.formatted_address;
+        }
         if(place.name){
             selectedPlace = {
-                address: place.formatted_address,
+                address: address,
                 lat: place.geometry.location.lat(),
                 lng: place.geometry.location.lng()
             }
@@ -74,7 +78,7 @@ class CreateFormMap extends Component {
             <React.Fragment>
                 <Script 
                     onLoad={this.handleScriptLoad} 
-                    url='https://maps.googleapis.com/maps/api/js?key=AIzaSyBY_d1jFhjDOyMnTa4eKfPMhTqu8H8I9sQ&libraries=places'/>
+                    url={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}&libraries=places`}/>
                
                 
                 <div className="map__input-field">

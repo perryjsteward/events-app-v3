@@ -30,8 +30,7 @@ const CreateEvent = (props) => {
     }
 
     if(props.event && props.createSuccess) {
-      let id = btoa(props.event.id);
-      return <Redirect to={`/event/${id}`}></Redirect>
+      return <Redirect to={`/event/${props.event.id}`}></Redirect>
     }
    
     return  (

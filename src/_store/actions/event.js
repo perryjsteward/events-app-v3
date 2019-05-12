@@ -47,14 +47,61 @@ export const createEventError = error => {
 }
 
 
-export const readEvent = event => {
-  // connect and get a requested event from firebase
-  // then dispatch action reducer to the store based on result e.e. success failure 
+export const readEvent = id => {
+  return dispatch => {
+    dispatch(readEventStart());
+    // needs updating
+    database.ref(`/events/-${id}`).once('value')
+      .then(result => {
+        if(result.val()) {
+          dispatch(readEventSuccess({ 
+            ...result.val()
+          }))
+        } else {
+          dispatch(readEventError({
+            message: 'No event found'
+          }))
+        }
+      })
+      .catch(error => {
+        dispatch(readEventError(error))
+      })
+  }
 };
+
+export const readEventStart = () => {
+  return { 
+    type: types.READ_EVENT_START
+  };
+};
+
+export const readEventSuccess = event => {
+  return { 
+    type: types.READ_EVENT_SUCCESS,
+    event: event,
+    readSuccess: true
+  };
+};
+
+export const readEventError = error => {
+  return { 
+    type: types.READ_EVENT_ERROR, 
+    error: error ,
+    readSuccess: false
+  };
+};
+
+
+
 
 export const updateEvent = event => {
   // connect and update a given event from firebase
   // then dispatch action reducer to the store based on result e.e. success failure 
+  // firebase.database().ref('users/' + userId).set({
+  //   username: name,
+  //   email: email,
+  //   profile_picture : imageUrl
+  // });
 };
 
 export const deleteEvent = event => {

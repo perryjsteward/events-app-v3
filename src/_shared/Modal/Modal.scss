@@ -25,9 +25,9 @@
 }
 
 .modal__content-wrapper-2 {
-    display: table-cell !important;
+    // display: table-cell !important;
     vertical-align: middle !important;
-    padding: 64px !important;
+    padding: 64px;
 }
 
 .modal__content {
@@ -51,7 +51,6 @@
     overflow-y: auto !important;
     background: rgba(0, 0, 0, 0.7) !important;
 
-
 }
 
 @media only screen and (max-width: 730px) { 
@@ -68,8 +67,15 @@
             top: 0;
         }
     }
+    .modal__content-wrapper-1 {
+        padding: 0 !important;
+        display: block;
+        height: 100% !important;;
+    }
     .modal__content-wrapper-2 {
-        padding: 0px !important;
+        padding: 0 !important;
+        display: block;
+        height: 100% !important;;
     }
 
     .modal__container-backdrop { 
