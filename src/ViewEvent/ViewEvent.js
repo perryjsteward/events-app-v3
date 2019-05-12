@@ -36,15 +36,31 @@ class ViewEvent extends Component {
     onShare = () => {
         this.setState({
             showModal: true,
-            modalTemplate: <ViewEventShare location={this.props.location}></ViewEventShare>
+            modalTemplate: (
+                <ViewEventShare event={this.props.event}></ViewEventShare>
+            )
         })
     }
 
     onSave = () => {
         this.setState({
             showModal: true,
-            modalTemplate: <ViewEventSave event={this.props.event}></ViewEventSave>
+            modalTemplate: (
+                <ViewEventSave 
+                    onAddToCalendar={() => this.incrementAttendees()}
+                    event={this.props.event}>
+                </ViewEventSave>
+            )
         })
+    }
+
+    incrementAttendees = () => {
+        const currEvent = { ...this.props.event };
+        const newEvent = {
+            ...currEvent,
+            attending: currEvent.attending + 1
+        }
+        this.props.onAddToCalendar(this.props.match.params.eventId, newEvent);
     }
 
     onCloseModal = () => {
@@ -111,7 +127,8 @@ const mapStateToProps = state => {
   
   const mapDispatchToProps = dispatch => {
     return {
-        onReadEvent: id => dispatch( actions.readEvent(id) )
+        onReadEvent: id => dispatch( actions.readEvent(id) ),
+        onAddToCalendar: (id, event) => dispatch( actions.updateEvent(id, event))
     };
   };
 

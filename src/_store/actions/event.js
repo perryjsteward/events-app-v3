@@ -92,16 +92,43 @@ export const readEventError = error => {
 };
 
 
+export const updateEvent = (id, event) => {
+  console.log(event)
+  return dispatch => {
+    dispatch(updateEventStart());
+    database.ref(`/events/-${id}`).set({ ...event })
+      .then(result => {
+        dispatch(updateEventSuccess({ 
+          ...event, 
+          id: id 
+        }))
+      })
+      .catch(error => {
+        dispatch(updateEventError(error))
+      })
+  }
+};
 
+export const updateEventStart = () => {
+  return { 
+    type: types.UPDATE_EVENT_START
+  };
+};
 
-export const updateEvent = event => {
-  // connect and update a given event from firebase
-  // then dispatch action reducer to the store based on result e.e. success failure 
-  // firebase.database().ref('users/' + userId).set({
-  //   username: name,
-  //   email: email,
-  //   profile_picture : imageUrl
-  // });
+export const updateEventSuccess = event => {
+  return { 
+    type: types.UPDATE_EVENT_SUCCESS,
+    event: event,
+    updateSuccess: true
+  };
+};
+
+export const updateEventError = error => {
+  return { 
+    type: types.UPDATE_EVENT_ERROR, 
+    error: error ,
+    updateSuccess: false
+  };
 };
 
 export const deleteEvent = event => {

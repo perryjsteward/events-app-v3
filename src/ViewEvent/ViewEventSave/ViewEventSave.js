@@ -4,27 +4,35 @@
 import React from 'react';
 import * as ics from 'ics';
 import './ViewEventSave.scss';
+import { trimText, removeCommas, getStartDateTime, getDuration } from '../../_utils/eventUtils';
 
 const ViewEventSave = props => {
 
+    let subText = 'Save the event to your calendar';
+
+    if(props.event){
+        subText += `: ${props.event.name}`;
+    }
+
+    if(props.event && props.event.location && props.event.location.name){
+        subText += ` at ${props.event.location.name}`;
+    }
 
     const getICal = event => {
-        return event = {
-            start: [2018, 5, 30, 6, 30],
-            duration: { hours: 6, minutes: 30 },
-            title: 'Bolder Boulder',
-            description: 'Annual 10-kilometer run in Boulder, Colorado',
-            location: 'Folsom Field, University of Colorado (finish line)',
-            url: 'http://www.bolderboulder.com/',
-            geo: { lat: 40.0095, lon: 105.2669 },
-            categories: ['10k races', 'Memorial Day Weekend', 'Boulder CO'],
-            status: 'CONFIRMED',
-            organizer: { name: 'Admin', email: 'Race@BolderBOULDER.com' },
-            attendees: [
-              { name: 'Adam Gibbons', email: 'adam@example.com', rsvp: true, partstat: 'ACCEPTED', role: 'REQ-PARTICIPANT' },
-              { name: 'Brittany Seaton', email: 'brittany@example2.org', dir: 'https://linkedin.com/in/brittanyseaton', role: 'OPT-PARTICIPANT' }
-            ]
+        if(props.event) {
+            return event = {
+                start: getStartDateTime(props.event),
+                duration: getDuration(props.event),
+                title: props.event.name,
+                description: trimText(props.event.description),
+                location: removeCommas(props.event.location.address),
+                url: document.location.href,
+                geo: { lat: props.event.location.lat, lon: props.event.location.lng },
+                categories: ['EventsApp'],
+                status: 'CONFIRMED',
+            }
         }
+
     }
 
     const saveICal = () => {
@@ -35,6 +43,7 @@ const ViewEventSave = props => {
               return
             }
             download('event.ics', value);
+            props.onAddToCalendar();
         });
     }
 
@@ -49,12 +58,12 @@ const ViewEventSave = props => {
         element.click();
       
         document.body.removeChild(element);
-      }
+    }
 
     return (
         <div>
             <h5>Save Event</h5>
-            <p>Save the event to your calendar: The Strokes @ All points East at Victoria Park</p>
+            <p>{subText}</p>
             <ul>
                 <li>
                     {/* eslint-disable-next-line */}

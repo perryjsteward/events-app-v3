@@ -40,7 +40,8 @@ class CreateFormMap extends Component {
             selectedPlace = {
                 address: address,
                 lat: place.geometry.location.lat(),
-                lng: place.geometry.location.lng()
+                lng: place.geometry.location.lng(),
+                name: place.name
             }
         }
         this.setState({

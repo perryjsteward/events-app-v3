@@ -50,6 +50,25 @@ const readEventFail = (state, action) => {
   })
 }
 
+// UPDATE EVENTS
+const updateEventStart = (state, action) => {
+  return state;
+}
+
+const updateEventSuccess = (state, action) => {
+  return updateObject(state, { 
+    event: action.event,
+    updateSuccess: true
+  })
+}
+
+const updateEventFail = (state, action) => {
+  return updateObject(state, { 
+    updateError: action.error,
+    updateSuccess: false
+  })
+}
+
 // IMAGES
 const uploadImageStart = (state, action) => {
   return updateObject(state, { 
@@ -93,6 +112,10 @@ export default (state = initialState, action) => {
     case actions.READ_EVENT_START: return readEventStart(state, action);
     case actions.READ_EVENT_SUCCESS: return readEventSuccess(state, action);
     case actions.READ_EVENT_ERROR: return readEventFail(state, action);
+     // READ EVENTS
+     case actions.UPDATE_EVENT_START: return updateEventStart(state, action);
+     case actions.UPDATE_EVENT_SUCCESS: return updateEventSuccess(state, action);
+     case actions.UPDATE_EVENT_ERROR: return updateEventFail(state, action);
     // IMAGES
     case actions.UPLOAD_IMAGE_START: return uploadImageStart(state, action);
     case actions.UPLOAD_IMAGE_SUCCESS: return uploadImageSuccess(state, action);

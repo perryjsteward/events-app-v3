@@ -22,14 +22,14 @@ class ViewEventMap extends Component {
             });
             const marker = new google.maps.Marker({position: location, map: map}); 
 
-            google.maps.event.addListener(marker, 'click', () => this.openMap(location));
+            google.maps.event.addListener(marker, 'click', () => this.openMap(this.props.location));
             
         }
        
     }
 
     openMap = loc => {
-        window.location.href = `http://maps.google.com/?q=${loc.lat}+${loc.lng}`;
+        window.location.href = `http://maps.google.com/?daddr=${loc.address}`;
     }
 
     render () {

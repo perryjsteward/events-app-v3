@@ -16,10 +16,20 @@ class ViewEventShare extends Component{
     };
 
     render() {
+        let subText = 'Check out this event on EventsApp';
+
+        if(this.props.event){
+            subText += `: ${this.props.event.name}`;
+        }
+    
+        if(this.props.event && this.props.event.location && this.props.event.location.name){
+            subText += ` at ${this.props.event.location.name}`;
+        }
+
         return (
             <div>
                 <h5>Share Event</h5>
-                <p>Check out this event on EventsApp: The Strokes @ All Points East at Victoria Park</p>
+                <p>{subText}</p>
                 <ul>
                     <li>
                         {/* eslint-disable-next-line */}
