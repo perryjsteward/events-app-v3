@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route, Redirect } from "react-router-dom";
 
 // shared
 import Spinner from './_shared/Spinner/Spinner';
@@ -38,6 +38,7 @@ class App extends Component {
           <Provider store={store}>
             <Spinner></Spinner>
             <Route path="/" exact component={CreateEvent} />
+            <Route exact path="/event" render={() => <Redirect to="/"/>}/>
             <Route path="/event/:eventId" component={ViewEvent} />
           </Provider>
         </Router>

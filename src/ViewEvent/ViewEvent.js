@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
-import { Helmet } from 'react-helmet';
+import ViewEventHeaders from './ViewEventHeaders/ViewEventHeaders';
 import './ViewEvent.scss';
+import { Redirect } from "react-router-dom";
 
 // state
 import * as actions from '../_store/actions';
@@ -27,10 +28,7 @@ class ViewEvent extends Component {
     componentDidMount = () => {
         if(this.props.match && this.props.match.params.eventId){
             this.props.onReadEvent(this.props.match.params.eventId);
-        } else {
-            // redirect or show error
-        }
-        
+        } 
     }
 
     onShare = () => {
@@ -71,19 +69,22 @@ class ViewEvent extends Component {
     }
 
 
+    handleReadErrorRedirect = error => {
+        if(error.status === 404){
+           return <Redirect to='/' />
+        }
+    }
 
     render() {
+        let redirect = '';
+        if(this.props.readError){
+            redirect = this.handleReadErrorRedirect(this.props.readError);
+        }
+
         return (
             <React.Fragment>
-
-                <Helmet>
-                    {/* <title>{this.props.event.name}</title>
-                    <meta property="og:title" content={this.props.event.name} /> */}
-                    {/* <meta property="og:url" content="https://eventsapp.co.uk/event/2323" />
-                    <meta property="og:description" content={this.state.event.location.address} />
-                    <meta property="fb:app_id" content="1846350962106408" />
-                    <meta property="og:image" content="https://static.spin.com/files/130816_strokes-640x426.jpg" />   */}
-                </Helmet>
+                {redirect}
+                <ViewEventHeaders event={this.props.event}></ViewEventHeaders>
 
                 <ViewEventHeaderControls
                     onShare={() => this.onShare()}

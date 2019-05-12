@@ -59,6 +59,7 @@ export const readEvent = id => {
           }))
         } else {
           dispatch(readEventError({
+            status: 404,
             message: 'No event found'
           }))
         }
