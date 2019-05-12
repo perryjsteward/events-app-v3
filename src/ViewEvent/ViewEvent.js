@@ -1,7 +1,6 @@
 import React , { Component } from 'react';
 import ViewEventHeaders from './ViewEventHeaders/ViewEventHeaders';
 import './ViewEvent.scss';
-import { Redirect } from "react-router-dom";
 
 // state
 import * as actions from '../_store/actions';
@@ -68,22 +67,10 @@ class ViewEvent extends Component {
         })
     }
 
-
-    handleReadErrorRedirect = error => {
-        if(error.status === 404){
-           return <Redirect to='/' />
-        }
-    }
-
     render() {
-        let redirect = '';
-        if(this.props.readError){
-            redirect = this.handleReadErrorRedirect(this.props.readError);
-        }
 
         return (
             <React.Fragment>
-                {redirect}
                 <ViewEventHeaders event={this.props.event}></ViewEventHeaders>
 
                 <ViewEventHeaderControls

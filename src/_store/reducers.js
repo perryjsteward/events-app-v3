@@ -1,7 +1,6 @@
 import * as actions from './actions';
 
 import { updateObject } from '../_utils/objectUtils';
-import { resetViewState } from './actions';
 
 const initialState = {}
 
@@ -40,29 +39,16 @@ const readEventStart = (state, action) => {
 const readEventSuccess = (state, action) => {
   return updateObject(state, { 
     isLoading: false,
-    event: action.event,
-    readSuccess: true,
-    readError: null
+    event: action.event
   })
 }
 
-const readEventFail = (state, action) => {
-  return updateObject(state, { 
-    isLoading: false,
-    readError: action.error,
-    readSuccess: false
-  })
-}
+// const readEventFail = (state, action) => {
+//   return updateObject(state, { 
+//     isLoading: false
+//   })
+// }
 
-
-const resetReadState = (state, action) => {
-  return updateObject(state, {
-    isLoading: false,
-    event: null,
-    readError: null,
-    readSuccess: null,
-  })
-}
 
 // UPDATE EVENTS
 const updateEventStart = (state, action) => {
@@ -126,8 +112,7 @@ export default (state = initialState, action) => {
      // READ EVENTS
     case actions.READ_EVENT_START: return readEventStart(state, action);
     case actions.READ_EVENT_SUCCESS: return readEventSuccess(state, action);
-    case actions.READ_EVENT_ERROR: return readEventFail(state, action);
-    case actions.RESET_READ_STATE: return resetReadState(state, action);
+    // case actions.READ_EVENT_ERROR: return readEventFail(state, action);
      // READ EVENTS
      case actions.UPDATE_EVENT_START: return updateEventStart(state, action);
      case actions.UPDATE_EVENT_SUCCESS: return updateEventSuccess(state, action);

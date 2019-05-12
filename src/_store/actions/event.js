@@ -15,7 +15,7 @@ export const createEvent = event => {
       .then(result => {
         dispatch(createEventSuccess({ 
           ...event, 
-          id: result.key 
+          id: result.key.substr(1)
         }))
       })
       .catch(error => {
@@ -51,21 +51,25 @@ export const readEvent = id => {
   return dispatch => {
     dispatch(readEventStart());
     // needs updating
+    console.log(id)
     database.ref(`/events/-${id}`).once('value')
       .then(result => {
+        console.log(result.toJSON())
         if(result.val()) {
           dispatch(readEventSuccess({ 
             ...result.val()
           }))
         } else {
-          dispatch(readEventError({
-            status: 404,
-            message: 'No event found'
-          }))
+          document.location.href="/";
+          // dispatch(readEventError({
+          //   status: 404,
+          //   message: 'No event found'
+          // }))
         }
       })
       .catch(error => {
-        dispatch(readEventError(error))
+        document.location.href="/";
+        // dispatch(readEventError(error))
       })
   }
 };
@@ -84,13 +88,13 @@ export const readEventSuccess = event => {
   };
 };
 
-export const readEventError = error => {
-  return { 
-    type: types.READ_EVENT_ERROR, 
-    error: error ,
-    readSuccess: false
-  };
-};
+// export const readEventError = error => {
+//   return { 
+//     type: types.READ_EVENT_ERROR, 
+//     error: error ,
+//     readSuccess: false
+//   };
+// };
 
 
 export const updateEvent = (id, event) => {
@@ -135,11 +139,4 @@ export const updateEventError = error => {
 export const deleteEvent = event => {
   // connect and delete a given event from firebase
   // then dispatch action reducer to the store based on result e.e. success failure 
-};
-
-
-export const resetReadState = () => {
-  return { 
-    type: types.RESET_READ_STATE
-  };
 };
