@@ -1,6 +1,7 @@
 import * as actions from './actions';
 
 import { updateObject } from '../_utils/objectUtils';
+import { resetViewState } from './actions';
 
 const initialState = {}
 
@@ -30,7 +31,9 @@ const createEventFail = (state, action) => {
 // READ EVENTS
 const readEventStart = (state, action) => {
   return updateObject(state, { 
-    isLoading: true
+    isLoading: true,
+    readSuccess: null,
+    readError: null
   })
 }
 
@@ -38,7 +41,8 @@ const readEventSuccess = (state, action) => {
   return updateObject(state, { 
     isLoading: false,
     event: action.event,
-    readSuccess: true
+    readSuccess: true,
+    readError: null
   })
 }
 
@@ -47,6 +51,16 @@ const readEventFail = (state, action) => {
     isLoading: false,
     readError: action.error,
     readSuccess: false
+  })
+}
+
+
+const resetReadState = (state, action) => {
+  return updateObject(state, {
+    isLoading: false,
+    event: null,
+    readError: null,
+    readSuccess: null,
   })
 }
 
@@ -100,6 +114,7 @@ const setSelectedLocation = (state, action) => {
   })
 }
 
+
 export default (state = initialState, action) => {
   switch(action.type) {
     // LOCATION
@@ -112,6 +127,7 @@ export default (state = initialState, action) => {
     case actions.READ_EVENT_START: return readEventStart(state, action);
     case actions.READ_EVENT_SUCCESS: return readEventSuccess(state, action);
     case actions.READ_EVENT_ERROR: return readEventFail(state, action);
+    case actions.RESET_READ_STATE: return resetReadState(state, action);
      // READ EVENTS
      case actions.UPDATE_EVENT_START: return updateEventStart(state, action);
      case actions.UPDATE_EVENT_SUCCESS: return updateEventSuccess(state, action);
@@ -120,6 +136,8 @@ export default (state = initialState, action) => {
     case actions.UPLOAD_IMAGE_START: return uploadImageStart(state, action);
     case actions.UPLOAD_IMAGE_SUCCESS: return uploadImageSuccess(state, action);
     case actions.UPLOAD_IMAGE_ERROR: return uploadImageFail(state, action);
+    // VIEW STATE
+    
     default: return state;
   }
 };

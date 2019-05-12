@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 
 // components
@@ -12,36 +12,43 @@ import './CreateEvent.scss';
 import * as actions from '../_store/actions';
 import { connect } from 'react-redux';
 
-const CreateEvent = (props) => {
+class CreateEvent extends Component {
 
-    const handleSubmit = event => {
+    handleSubmit = event => {
       let currForm = [ ...event ];
       let formData = [];
       currForm.forEach(el => {
           if(el.value) formData[el.name] = el.value;
-          if(el.name === 'upload_file' && el.value) formData[el.name] = props.imagePath;
+          if(el.name === 'upload_file' && el.value) formData[el.name] = this.props.imagePath;
       });
       // add location details
-      if(props.selectedLocation){
-          formData['location'] = props.selectedLocation;
+      if(this.props.selectedLocation){
+          formData['location'] = this.props.selectedLocation;
       }
       // could do this better
-      props.onCreateEvent(formData);
-    }
-
-    if(props.event && props.createSuccess) {
-      return <Redirect to={`/event/${props.event.id}`}></Redirect>
+      this.props.onCreateEvent(formData);
     }
    
-    return  (
-      <div className="create-event__row">
-        <CreateForm 
-          error={props.error}
-          onSubmit={event => handleSubmit(event)}>
-        </CreateForm>
-        <CreateFormMap></CreateFormMap>
-      </div>
-    );
+    render(){
+
+      this.props.resetReadState();
+
+      if(this.props.event && this.props.createSuccess) {
+        let id = btoa(this.props.event.id);
+        return <Redirect to={`/event/${id}`}></Redirect>
+      }
+
+      return  (
+        <div className="create-event__row">
+          <CreateForm 
+            error={this.props.error}
+            onSubmit={event => this.handleSubmit(event)}>
+          </CreateForm>
+          <CreateFormMap></CreateFormMap>
+        </div>
+      );
+    }
+    
 
 };
 
@@ -59,7 +66,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
       onCreateEvent: (event) => dispatch( actions.createEvent(event) ),
-      onImageUpload: (image) => dispatch( actions.uploadImage(image) )
+      onImageUpload: (image) => dispatch( actions.uploadImage(image) ),
+      resetReadState: () => dispatch( actions.resetReadState())
   };
 };
 

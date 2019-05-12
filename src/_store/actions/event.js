@@ -136,3 +136,10 @@ export const deleteEvent = event => {
   // connect and delete a given event from firebase
   // then dispatch action reducer to the store based on result e.e. success failure 
 };
+
+
+export const resetReadState = () => {
+  return { 
+    type: types.RESET_READ_STATE
+  };
+};
