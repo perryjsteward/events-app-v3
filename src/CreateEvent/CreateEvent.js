@@ -32,8 +32,8 @@ const CreateEvent = (props) => {
       // set attending
       formData['attending'] = 1;
       // could do this better
-      console.log("SUBMITTIN OK")
-      // props.onCreateEvent(formData);
+      // console.log("SUBMITTIN OK")
+      props.onCreateEvent(formData);
     }
 
     if(props.event && props.createSuccess) {

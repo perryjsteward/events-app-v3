@@ -23,6 +23,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:dev": "sh -ac '. .env.dev; react-scripts build'",
+    "build:prod": "sh -ac '. .env.prod; react-scripts build'",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

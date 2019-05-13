@@ -55,10 +55,6 @@ export const inputValidation = (value, rules, form) => {
         const start_time = findFormInputByID('start_time', form);
         let end_date = findFormInputByID('end_date', form);
 
-
-        console.log(start_date.value, start_time.value)
-        console.log(end_date.value, value)
-
         if(value && end_date.value && end_date.value === start_date.value){
             isValid = value > start_time.value && isValid;
         } 
