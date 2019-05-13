@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 // state
 import * as actions from '../_store/actions';
 import { connect } from 'react-redux';
+import ReactGA from 'react-ga';
 
 import ViewEventImage from './ViewEventImage/ViewEventImage';
 import ViewEventHeaderControls from './ViewEventHeaderControls/ViewEventHeaderControls';
@@ -15,6 +16,7 @@ import ViewEventShare from './ViewEventShare/ViewEventShare';
 import ViewEventSave from './ViewEventSave/ViewEventSave';
 
 import Modal from '../_shared/Modal/Modal';
+
 
 
 class ViewEvent extends Component {
@@ -48,6 +50,10 @@ class ViewEvent extends Component {
                 <ViewEventShare event={this.props.event}></ViewEventShare>
             )
         })
+        ReactGA.event({
+            category: 'View Event',
+            action: 'Opened Share Dialog'
+        });
     }
 
     onSave = () => {
@@ -60,6 +66,10 @@ class ViewEvent extends Component {
                 </ViewEventSave>
             )
         })
+        ReactGA.event({
+            category: 'View Event',
+            action: 'Opened Save Dialog'
+        });
     }
 
     incrementAttendees = () => {
@@ -69,6 +79,10 @@ class ViewEvent extends Component {
             attending: currEvent.attending + 1
         }
         this.props.onAddToCalendar(this.props.match.params.eventId, newEvent);
+        ReactGA.event({
+            category: 'View Event',
+            action: 'Saved To Calendar'
+        });
     }
 
     onCloseModal = () => {
@@ -80,6 +94,10 @@ class ViewEvent extends Component {
 
     render() {
 
+        if(this.props.event) {
+            ReactGA.pageview(`/event/${this.props.event.id}`);
+        }
+       
         return (
             <React.Fragment>
                 <ViewEventHeaders event={this.props.event}></ViewEventHeaders>
@@ -118,9 +136,7 @@ class ViewEvent extends Component {
 
 const mapStateToProps = state => {
     return {
-        event: state.event,
-        readSuccess: state.readSuccess,
-        readError: state.readError
+        event: state.event
     };
   };
   

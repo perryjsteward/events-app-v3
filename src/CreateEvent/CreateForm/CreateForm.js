@@ -5,6 +5,7 @@ import Input from '../../_shared/Input/Input';
 import Upload from '../../_shared/Upload/Upload';
 import Alert from '../../_shared/Alert/Alert';
 import formInputs from './formInputs';
+import ReactGA from 'react-ga';
 
 // state
 import * as actions from '../../_store/actions';
@@ -39,12 +40,23 @@ class CreateForm extends Component {
         this.props.onImageUpload(value);
     }
 
+    let validatedForm = newForm.map(el => {
+        if(el.hasStarted && el.name !== name){
+            return {
+                ...el,
+                 isValid: inputValidation(el.value, el.validation, newForm)
+            }
+        }
+        return el;
+    })
+
     // set new form and check form validity
     this.setState({ 
-        createForm: newForm,
-        formIsValid: formValidation(newForm)
+        createForm: validatedForm,
+        formIsValid: formValidation(validatedForm)
     });
   }
+ 
 
   setInputElement = (el) => {
     let element = (
@@ -127,6 +139,10 @@ class CreateForm extends Component {
         createForm: newForm,
         formIsValid: formValidation(newForm)
     });
+    ReactGA.event({
+        category: 'Create Event',
+        action: 'Reset Form'
+    });
   }
 
   setAlertElement = () => {
@@ -139,7 +155,11 @@ class CreateForm extends Component {
 
   onSubmit = () => {
     if(this.isFormValid()){
-        this.props.onSubmit(this.state.createForm)
+        this.props.onSubmit(this.state.createForm);
+        ReactGA.event({
+            category: 'Create Event',
+            action: 'Submitted Form'
+        });
     } else {
         this.setState({
             hasTriedSubmission: true

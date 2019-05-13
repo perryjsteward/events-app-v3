@@ -3,10 +3,8 @@
 // import axios from 'axios'; 
 import { database } from '../firebase';
 import * as types from './types';
+import ReactGA from 'react-ga';
 
-export const createEventWithImage = event => {
-
-}
 
 export const createEvent = event => {
   return dispatch => {
@@ -25,12 +23,20 @@ export const createEvent = event => {
 };
 
 export const createEventStart = () => {
+  ReactGA.event({
+    category: 'Create Event',
+    action: 'Started'
+  });
   return { 
     type: types.CREATE_EVENT_START
   };
 }
 
 export const createEventSuccess = event => {
+  ReactGA.event({
+    category: 'Create Event',
+    action: 'Created'
+  });
   return { 
     type: types.CREATE_EVENT_SUCCESS,
     event: event,
@@ -39,13 +45,16 @@ export const createEventSuccess = event => {
 }
 
 export const createEventError = error => {
+  ReactGA.event({
+    category: 'Create Event',
+    action: 'Failed'
+  });
   return { 
     type: types.CREATE_EVENT_ERROR, 
     error: error ,
     createSuccess: false
   };
 }
-
 
 export const readEvent = id => {
   return dispatch => {
@@ -57,6 +66,7 @@ export const readEvent = id => {
           dispatch(readEventSuccess({ 
             ...result.val()
           }))
+          
         } else {
           document.location.href="/";
           // dispatch(readEventError({
@@ -73,12 +83,20 @@ export const readEvent = id => {
 };
 
 export const readEventStart = () => {
+  ReactGA.event({
+    category: 'Read Event',
+    action: 'Started'
+  });
   return { 
     type: types.READ_EVENT_START
   };
 };
 
 export const readEventSuccess = event => {
+  ReactGA.event({
+    category: 'Read Event',
+    action: 'Read'
+  });
   return { 
     type: types.READ_EVENT_SUCCESS,
     event: event,
@@ -96,7 +114,6 @@ export const readEventSuccess = event => {
 
 
 export const updateEvent = (id, event) => {
-  console.log(event)
   return dispatch => {
     dispatch(updateEventStart());
     database.ref(`/events/-${id}`).set({ ...event })
@@ -113,12 +130,20 @@ export const updateEvent = (id, event) => {
 };
 
 export const updateEventStart = () => {
+  ReactGA.event({
+    category: 'Update Event',
+    action: 'Started'
+  });
   return { 
     type: types.UPDATE_EVENT_START
   };
 };
 
 export const updateEventSuccess = event => {
+  ReactGA.event({
+    category: 'Update Event',
+    action: 'Updated'
+  });
   return { 
     type: types.UPDATE_EVENT_SUCCESS,
     event: event,
@@ -127,6 +152,10 @@ export const updateEventSuccess = event => {
 };
 
 export const updateEventError = error => {
+  ReactGA.event({
+    category: 'Update Event',
+    action: 'Failed'
+  });
   return { 
     type: types.UPDATE_EVENT_ERROR, 
     error: error ,
@@ -134,7 +163,3 @@ export const updateEventError = error => {
   };
 };
 
-export const deleteEvent = event => {
-  // connect and delete a given event from firebase
-  // then dispatch action reducer to the store based on result e.e. success failure 
-};

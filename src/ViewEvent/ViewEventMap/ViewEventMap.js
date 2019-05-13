@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
 import Script from 'react-load-script';
 import './ViewEventMap.scss'
+import ReactGA from 'react-ga';
+
 /* global google */
 class ViewEventMap extends Component {
 
-    handleScriptLoad = (props) => {
-        // do things to load map
+    state = {
+        scriptLoaded: false
+    }
 
-        if(this.props.location){
+    handleScriptCreate = () => {
+        this.setState({ scriptLoaded: false })
+    }
+       
+    handleScriptError = () => {
+        this.setState({ scriptError: true })
+    }
+       
+    handleScriptLoad = () => {
+        this.setState({ scriptLoaded: true })
+        this.loadLocation();
+    }
+
+    loadLocation = () => {
+        // do things to load map
+        if(this.props.event && this.props.event.location){
             const location = {
-                lat: this.props.location.lat, 
-                lng: this.props.location.lng, 
+                lat: this.props.event.location.lat, 
+                lng: this.props.event.location.lng, 
             };
     
             const map = new google.maps.Map(document.getElementById(this.props.id), {
@@ -22,7 +40,7 @@ class ViewEventMap extends Component {
             });
             const marker = new google.maps.Marker({position: location, map: map}); 
 
-            google.maps.event.addListener(marker, 'click', () => this.openMap(this.props.location));
+            google.maps.event.addListener(marker, 'click', () => this.openMap(this.props.event.location));
             
         }
        
@@ -30,9 +48,16 @@ class ViewEventMap extends Component {
 
     openMap = loc => {
         window.location.href = `http://maps.google.com/?daddr=${loc.address}`;
+        ReactGA.event({
+            category: 'View Event',
+            action: 'Map Directions Opened'
+        });
     }
 
     render () {
+        if(this.state.scriptLoaded) {
+            this.loadLocation();
+        }
         return (
              <React.Fragment>
                 <Script 
@@ -46,5 +71,6 @@ class ViewEventMap extends Component {
         );
     };
 };
+
 
 export default ViewEventMap;

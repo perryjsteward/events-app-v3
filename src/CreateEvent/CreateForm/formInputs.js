@@ -66,7 +66,7 @@ export const formInputs = [
         hint: 'The time must be in the future',
         validation: {
             [formRules.isRequired]: false,
-            [formRules.isAtLeastNow]: true //not implemented yet
+            [formRules.isAtLeastNow]: true, //not implemented yet
         },
         isValid: true,
         ref: React.createRef()
@@ -78,10 +78,11 @@ export const formInputs = [
         group: 2,
         position: 1,
         value: '',
+        hint: 'Make sure this is after your start date',
         min: new Date().toISOString().split('T')[0],
         validation: {
             [formRules.isRequired]: false,
-            [formRules.isGreaterThanOrEqualStartDate]: true //not implemented yet
+            [formRules.isGreaterThanOrEqualToStartDate]: true
         },
         isValid: true,
         ref: React.createRef()
@@ -93,10 +94,11 @@ export const formInputs = [
         inline: true,
         group: 2,
         position: 2,
+        hint: 'Make sure this is after your start date time',
         value: '',
         validation: {
             [formRules.isRequired]: false,
-            [formRules.isGreaterThanOrEqualStartDateTime]: true,
+            [formRules.isGreaterThanOrEqualToStartDateTime]: true,
         },
         isValid: true,
         ref: React.createRef()

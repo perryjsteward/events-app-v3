@@ -14,7 +14,7 @@ const ViewEventSidebar = (props) => {
     if(props.event && props.event.location){
         eventMap =(
             <div className="sidebar__map">
-                <ViewEventMap location={props.event.location} id="view-sidebar"></ViewEventMap>
+                <ViewEventMap event={props.event} id="view-sidebar"></ViewEventMap>
             </div>
         );
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import './ViewEventContent.scss';
 import moment from "moment";
 import ViewEventMap from '../ViewEventMap/ViewEventMap';
+import ReactGA from 'react-ga';
 
 const ViewEventContent = (props) => {
 
@@ -45,7 +46,7 @@ const ViewEventContent = (props) => {
                 <p className="title">Where to go</p>
                 <p className="text">Click the marker for directions to the event</p>
                 <div className="map">
-                    <ViewEventMap location={props.event.location} id="view-main"></ViewEventMap>
+                    <ViewEventMap event={props.event} id="view-main"></ViewEventMap>
                 </div>
             </div>
         );
@@ -89,6 +90,10 @@ const ViewEventContent = (props) => {
 
     const openMap = address => {
         window.location.href = `http://maps.google.com/?daddr=${address}`;
+        ReactGA.event({
+            category: 'View Event',
+            action: 'Link Directions Opened'
+        });
     }
 
     return (

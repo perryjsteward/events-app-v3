@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from "react-router-dom";
+import ReactGA from 'react-ga';
 
 // components
 import CreateFormMap from  './CreateFormMap/CreateFormMap';
@@ -12,7 +13,10 @@ import './CreateEvent.scss';
 import * as actions from '../_store/actions';
 import { connect } from 'react-redux';
 
+
 const CreateEvent = (props) => {
+
+   ReactGA.pageview('/');
 
     const handleSubmit = event => {
       let currForm = [ ...event ];
@@ -28,7 +32,8 @@ const CreateEvent = (props) => {
       // set attending
       formData['attending'] = 1;
       // could do this better
-      props.onCreateEvent(formData);
+      console.log("SUBMITTIN OK")
+      // props.onCreateEvent(formData);
     }
 
     if(props.event && props.createSuccess) {

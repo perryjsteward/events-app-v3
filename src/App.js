@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { HashRouter as Router, Route, Redirect } from "react-router-dom";
-
+import ReactGA from 'react-ga';
 // shared
 import Spinner from './_shared/Spinner/Spinner';
 
@@ -15,6 +15,7 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import reduxThunk from 'redux-thunk';
 import reducers from './_store/reducers';
 
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -33,6 +34,7 @@ const store = createStore(reducers, enhancer);
 class App extends Component {
 
   render() {
+
     return (
         <Router>
           <Provider store={store}>

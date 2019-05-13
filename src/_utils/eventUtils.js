@@ -31,13 +31,18 @@ export const getStartDateTime = event => {
 export const getDuration = event => {
     const start_date = event.start_date.split('-');
     const start_time = event.start_time ? event.start_time.split(':') : ['00', '00'];
+
     const end_date = event.end_date ? event.end_date.split('-') : start_date;
-    const end_time = event.end_time ? event.end_time.split(':') : ['00', '00'];
+    let end_time = event.end_time ? event.end_time.split(':') : ['00', '00'];
+
+    if(!event.end_time && event.end_date){
+        end_time = start_time;
+    }
 
     const start_date_time = moment([...start_date, ...start_time]);
     const end_date_time = moment([...end_date, ...end_time]);
 
-    var duration = moment.duration(start_date_time.diff(end_date_time))
+    var duration = moment.duration(end_date_time.diff(start_date_time));
 
     if(end_date_time.isSameOrBefore(start_date_time)){
         return { 

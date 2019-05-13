@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import './ViewEventShare.scss';
 import copy from 'copy-to-clipboard';
-
+import ReactGA from 'react-ga';
 
 class ViewEventShare extends Component{
     state = {
@@ -13,6 +13,10 @@ class ViewEventShare extends Component{
         this.setState({
             copyLinkText: 'Copied!'
         })
+        ReactGA.event({
+            category: 'View Event',
+            action: 'Copied URL'
+        });
     };
 
     render() {
