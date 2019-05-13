@@ -34,17 +34,18 @@ const store = createStore(reducers, enhancer);
 class App extends Component {
 
   render() {
-
     return (
         <Router>
           <Provider store={store}>
             <Spinner></Spinner>
             <Route path="/" exact component={CreateEvent} />
-            <Route exact path="/event" render={() => <Redirect to="/"/>}/>
+            <Route exact path="/event" render={() => <Redirect to="/"/>} />
+            <Route path="/view/:eventId" render={
+              params => <Redirect to={`/event/${params.match.params.eventId}`} /> 
+            }/>
             <Route path="/event/:eventId" component={ViewEvent} />
           </Provider>
         </Router>
-
     );
   }
 }
