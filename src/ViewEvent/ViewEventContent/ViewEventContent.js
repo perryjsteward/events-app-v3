@@ -12,6 +12,7 @@ const ViewEventContent = (props) => {
     let eventDate = <div className="event__content-date__loading"></div>;
     let eventDescription = <div className="event__content-description__loading"></div>;
     let eventMap = <div className="event__content-map__loading"></div>;
+    let eventHelp = <div className="event__content-help__loading"></div>;
 
     if(props.event){
         eventType = (
@@ -96,6 +97,16 @@ const ViewEventContent = (props) => {
         });
     }
 
+
+    if(props.event){
+        eventHelp = (
+            <div className="event__content-help">
+                <p className="sub-title">Help</p>
+                <p>Need some help? <a href={`mailto:help.eventsapp@gmail.com?subject=I need help with Event: ${props.event.id}`}>Send us an email</a></p>
+            </div>
+        );
+    }
+
     return (
         <div className="event__content-container">
             {eventType}
@@ -104,6 +115,7 @@ const ViewEventContent = (props) => {
             {eventDate}
             {eventDescription}
             {eventMap}
+            {eventHelp}
         </div>
     );
 };
