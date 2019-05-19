@@ -12,7 +12,8 @@ const ViewEventImage = (props) => {
         bgStyle = {
             backgroundImage: `url(${url})`
         }
-    } else {
+    } 
+    if(props.event && !props.event.upload_file){
         const file = encodeURIComponent("images/1534185444204-4089929-balloons-birthday-celebrate-1071882.jpg");
         url = `https://firebasestorage.googleapis.com/v0/b/${process.env.REACT_APP_FIREBASE_BUCKET}/o/${file}?alt=media`;
         bgStyle = {

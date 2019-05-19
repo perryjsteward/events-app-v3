@@ -31,19 +31,23 @@ const CreateEvent = (props) => {
       }
       // set attending
       formData['attending'] = 1;
-      // could do this better
-      // console.log("SUBMITTIN OK")
-      props.onCreateEvent(formData);
+
+      if(!formData['id']){
+        props.onCreateEvent(formData);
+      } else {
+        props.onEditEvent(formData);
+      }
     }
 
     if(props.event && props.createSuccess) {
       let id = props.event.id;
-      return <Redirect to={`/event/${id}`}></Redirect>
+      return <Redirect to={`/v/${id}`}></Redirect>
     }
    
     return  (
       <div className="create-event__row">
         <CreateForm 
+          event={props.event}
           error={props.error}
           onSubmit={event => handleSubmit(event)}>
         </CreateForm>
@@ -67,7 +71,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
       onCreateEvent: (event) => dispatch( actions.createEvent(event) ),
-      onImageUpload: (image) => dispatch( actions.uploadImage(image) )
+      onEditEvent: (event) => dispatch( actions.updateEvent(event) )
   };
 };
 

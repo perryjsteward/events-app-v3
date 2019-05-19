@@ -110,7 +110,10 @@ class ViewEvent extends Component {
                 <ViewEventImage event={this.props.event}></ViewEventImage>
 
                 <div className="view-event__row">
-                    <ViewEventContent event={this.props.event}></ViewEventContent>
+                    <ViewEventContent 
+                        id={this.props.match.params.eventId}
+                        event={this.props.event}>
+                    </ViewEventContent>
                     <ViewEventSidebar
                         event={this.props.event}
                         onSave={() => this.onSave()}>

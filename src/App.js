@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { HashRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import ReactGA from 'react-ga';
 // shared
 import Spinner from './_shared/Spinner/Spinner';
@@ -39,15 +39,20 @@ class App extends Component {
           <Provider store={store}>
             <Spinner></Spinner>
             <Route path="/" exact component={CreateEvent} />
-            <Route exact path="/event" render={() => <Redirect to="/"/>} />
             {/* View route for legacy events */}
-            <Route path="/view" render={
+            <Route path="/#/view" render={
               params => {
                 let id = params.location.search.split('=')[1];
-                return <Redirect to={`/event/${id}`} />
+                return <Redirect to={`/v/${id}`} />
               } 
             }/>
-            <Route path="/event/:eventId" component={ViewEvent} />
+            <Route path="/#/event" render={
+              params => {
+                let id = params.location.search.split('=')[1];
+                return <Redirect to={`/v/${id}`} />
+              } 
+            }/>
+            <Route path="/v/:eventId" component={ViewEvent} />
           </Provider>
         </Router>
     );

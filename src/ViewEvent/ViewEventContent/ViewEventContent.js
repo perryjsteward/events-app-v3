@@ -99,10 +99,11 @@ const ViewEventContent = (props) => {
 
 
     if(props.event){
+        const body = encodeURI(`Hi EventsApp team! \n\n I would love your help with this event ${document.location}`)
         eventHelp = (
             <div className="event__content-help">
                 <p className="sub-title">Help</p>
-                <p>Need some help? <a href={`mailto:help.eventsapp@gmail.com?subject=I need help with Event: ${props.event.id}`}>Send us an email</a></p>
+                <p>Need some help? <a href={`mailto:help.eventsapp@gmail.com?subject=I need help with Event: ${props.id}&body=${body}`}>Send us an email</a></p>
             </div>
         );
     }

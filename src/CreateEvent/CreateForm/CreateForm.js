@@ -178,8 +178,22 @@ class CreateForm extends Component {
     }
   }
 
+  setDefaultValues = (currForm, event) => {
+    // if(event){
+    //     return currForm.map(el => {
+    //         return {
+    //             ...el,
+    //             value: event[el.name]
+    //         };
+    //     });
+    // } else {
+        return currForm;
+    // }
+  }
+
   render() {
-    let currForm = [ ...this.state.createForm ];
+    const createForm = [ ...this.state.createForm ]
+    let currForm = this.setDefaultValues(createForm, this.props.event);
 
     let allInputs = currForm
         .filter(el => el.type !== 'file')
