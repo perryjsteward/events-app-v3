@@ -185,6 +185,7 @@ class CreateFormMap extends Component {
             this.state.marker.setMap(null);
         };
         this.props.onSetLocation(undefined);
+        this.addressInput.focus();
     }
 
 
@@ -207,7 +208,7 @@ class CreateFormMap extends Component {
                         id="autocomplete"
                         value={this.state.value}
                         clearInput={() => this.clearInput()}
-                        ref={this.addressInput}
+                        ref={(input) => { this.addressInput = input; }}
                         onChange={(e) => this.handleUserInput(e)} //need to smartly remove this
                         prefix="fa-search"
                         size="medium"
