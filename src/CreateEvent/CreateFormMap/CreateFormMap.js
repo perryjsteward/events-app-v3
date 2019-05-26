@@ -71,6 +71,7 @@ class CreateFormMap extends Component {
         this.setState({
             selectedPlace: selectedPlace
         });
+        this.value = address;
         this.props.onSetLocation(this.state.selectedPlace);
         this.placeMarker({
             lat: place.geometry.location.lat(),
@@ -156,7 +157,7 @@ class CreateFormMap extends Component {
                     lng: place.geometry.location.lng(),
                     name: place.name ? place.name : address
                 }
-                this.addressInput.current.value = address;
+                this.value = address;
                 this.setState({
                     selectedPlace: selectedPlace
                 });
@@ -171,7 +172,23 @@ class CreateFormMap extends Component {
        
     }
 
-    handleUserInput = e => {}
+    clearInput = () => {
+        this.value = '';
+        this.setState({
+            selectedPlace: null
+        });
+        if(this.state.marker) {
+            this.state.marker.setMap(null);
+        };
+        this.props.onSetLocation(undefined);
+    }
+
+
+    handleUserInput = e => {
+        // if(this.state.selectedPlace) {
+        //     this.value = this.state.selectedPlace.address;
+        // }
+    }
  
     render() {
         return (
@@ -183,9 +200,11 @@ class CreateFormMap extends Component {
                 <div className="map__input-field">
                     <Input 
                         id="autocomplete"
+                        value={this.value}
+                        clearInput={() => this.clearInput()}
                         ref={this.addressInput}
                         onChange={(e) => this.handleUserInput(e)} //need to smartly remove this
-                        icon="fa-search"
+                        prefix="fa-search"
                         size="medium"
                         type="text"
                         isValid={true}

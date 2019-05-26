@@ -64,6 +64,7 @@ class CreateForm extends Component {
             ref={el.ref}
             key={el.name}
             value={el.value}
+            clearInput={() => this.validateUserInput('', el.name)}
             onChange={(e) => this.validateUserInput(e.target.value, el.name)}
             required={el.validation[formRules.isRequired]}
             type={el.type} 
@@ -244,6 +245,7 @@ const mapStateToProps = state => {
         imageError: state.imageUploadError,
         createError: state.createError,
         hasImageUploaded: state.hasImageUploaded,
+        selectedLocation: state.selectedLocation
     };
 };
   

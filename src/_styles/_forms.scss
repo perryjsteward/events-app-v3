@@ -60,6 +60,7 @@ input{
     &:required::after {
         content: " *"
     }
+
 }
 
 
@@ -170,12 +171,26 @@ label {
     margin-top: 28px;
     margin-left: 18px;
     color: $grey-500;
+
+
+    &.input__suffix {
+        margin-left: -28px;
+        color: $grey-300;
+
+        &:hover {
+            cursor: pointer;
+            color: $grey-500;
+        }
+    }
 }
 
 .input__with-icon {
     text-indent: 29px !important;
 }
 
+.input__with-suffix {
+    padding-right: 41px;
+}
 
 .form-control {
     display: flex;
@@ -348,3 +363,4 @@ textarea {
         content: " *"
     }
 }
+

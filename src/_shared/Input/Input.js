@@ -3,8 +3,9 @@ import React from 'react';
 const Input = React.forwardRef((props, ref) => {
     let inputLabel = '';
     let inputHint = '';
-    let inputIcon = '';
+    let inputPrefix = '';
     let inputType = '';
+    let inputSuffix = '';
 
     let classes = [];
     
@@ -25,10 +26,20 @@ const Input = React.forwardRef((props, ref) => {
         );
     }
 
-    if(props.icon){
+    if(props.prefix){
         classes.push('input__with-icon');
-        inputIcon = (
-            <span className={"input__icon fas " + props.icon}></span>
+        inputPrefix = (
+            <span className={"input__icon fas " + props.prefix}></span>
+        );
+    }
+
+    if(props.value) {
+        classes.push('input__with-suffix');
+        inputSuffix = (
+            <span 
+                onClick={() => props.clearInput()}
+                className={"input__icon input__suffix fas fa-times"}>
+            </span>
         );
     }
 
@@ -83,8 +94,9 @@ const Input = React.forwardRef((props, ref) => {
         <React.Fragment>
             {inputLabel}
             <div>
-                {inputIcon}
+                {inputPrefix}
                 {inputType}
+                {inputSuffix}
             </div>
             {inputHint}
         </React.Fragment>
