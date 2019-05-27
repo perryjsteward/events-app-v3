@@ -9,11 +9,26 @@ const Upload = (props) => {
     let fileInput = null;
     let inputHint = '';
     let type = '';
+    let uploadHint = '';
     const acceptedTypes = props.acceptedTypes ? props.acceptedTypes.join('') : null;
 
-    let uploadHint = props.file ? props.file.name : 'Upload a photo';
-    uploadHint = props.isUploading ? 'Uploading...' : uploadHint;
-    uploadHint = props.imageError ? 'Something went wrong :(' : uploadHint;
+    if(props.isUploading) {
+        uploadHint = (
+            <i className="upload-icon loading fas fa-spinner fa-pulse"></i>
+        );
+    }
+
+    if(props.file && !props.isUploading) {
+        uploadHint = (
+            <i className="upload-icon success far fa-check-circle"></i>
+        );
+    }
+
+    if(props.imageError && !props.isUploading) {
+        uploadHint = (
+            <i className="upload-icon error far fa-times-circle"></i>
+        );
+    }
 
     const handleClick = () => fileInput.click();
 
@@ -34,7 +49,7 @@ const Upload = (props) => {
             onClick={handleClick}
             size="small" 
             outline>
-            Browse files
+            Upload a photo
         </Button>
     )
 
