@@ -16,7 +16,7 @@ import { connect } from 'react-redux';
 
 const CreateEvent = (props) => {
 
-   ReactGA.pageview('/');
+    ReactGA.pageview('/');
 
     const handleSubmit = event => {
       let currForm = [ ...event ];

@@ -21,6 +21,12 @@ const ViewEventHeaderControls = (props) => {
                         <span className="fas fa-chevron-left event__controls-icon"></span>
                     </div>   
                 </Link>
+                <Link to={`/?edit=${true}`}>
+                    <div className="event__controls-icon__container">
+                        <div className="event__controls-icon__bg"></div>
+                        <span className="fas fa-chevron-left event__controls-icon"></span>
+                    </div>   
+                </Link>
                 <div className="align-right">
                     <div 
                         onClick={() => props.onSave()}
