@@ -61,12 +61,12 @@ class CreateForm extends Component {
   setInputElement = (el) => {
     let element = (
         <Input
-            ref={(input) => el.ref = input}
+            ref={el.ref}
             key={el.name}
             value={el.value}
             clearInput={() => {
                 this.validateUserInput('', el.name);
-                el.ref.focus();
+                el.ref.current.focus();
             }}
             onChange={(e) => this.validateUserInput(e.target.value, el.name)}
             required={el.validation[formRules.isRequired]}
@@ -177,7 +177,7 @@ class CreateForm extends Component {
     let element = currForm.filter(el => {
         return el.validation[formRules.isRequired] && !el.isValid;
     })[0];
-    if(element){
+    if(element && element.ref && element.ref.current){
         element.ref.current.focus();
     }
   }
