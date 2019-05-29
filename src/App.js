@@ -52,6 +52,15 @@ class App extends Component {
                 return <Redirect to={`/v/${id}`} />
               } 
             }/>
+            <Route path="/event/:eventId" render={
+              params => {
+                console.log(params)
+                if(params){
+                  let id = params.match.params.eventId;
+                  return <Redirect to={`/v/${id}`} />                
+                }
+              } 
+            }/>
             <Route path="/v/:eventId" component={ViewEvent} />
           </Provider>
         </Router>
