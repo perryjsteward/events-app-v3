@@ -183,7 +183,7 @@ class CreateForm extends Component {
   }
 
   setDefaultValues = (currForm, event) => {
-      console.log(event)
+    //   console.log(event)
     // if(event){
     //     return currForm.map(el => {
     //         return {
