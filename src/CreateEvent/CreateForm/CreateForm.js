@@ -6,6 +6,7 @@ import Upload from '../../_shared/Upload/Upload';
 import Alert from '../../_shared/Alert/Alert';
 import formInputs from './formInputs';
 import ReactGA from 'react-ga';
+import { withRouter } from 'react-router-dom';
 
 // state
 import * as actions from '../../_store/actions';
@@ -183,17 +184,16 @@ class CreateForm extends Component {
   }
 
   setDefaultValues = (currForm, event) => {
-    //   console.log(event)
-    // if(event){
-    //     return currForm.map(el => {
-    //         return {
-    //             ...el,
-    //             value: event[el.name]
-    //         };
-    //     });
-    // } else {
+    if(event){
+        return currForm.map(el => {
+            return {
+                ...el,
+                value: event[el.name]
+            };
+        });
+    } else {
         return currForm;
-    // }
+    }
   }
 
   render() {
@@ -259,4 +259,5 @@ const mapDispatchToProps = dispatch => {
     };
 };
   
-export default connect( mapStateToProps, mapDispatchToProps )(CreateForm);
+
+export default withRouter(connect( mapStateToProps, mapDispatchToProps )(CreateForm));

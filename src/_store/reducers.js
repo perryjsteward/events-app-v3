@@ -39,7 +39,8 @@ const readEventStart = (state, action) => {
 const readEventSuccess = (state, action) => {
   return updateObject(state, { 
     isLoading: false,
-    event: action.event
+    event: action.event,
+    createSuccess: false // reset on success read
   })
 }
 

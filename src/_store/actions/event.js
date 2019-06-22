@@ -64,6 +64,7 @@ export const readEvent = id => {
       .then(result => {
         if(result.val()) {
           dispatch(readEventSuccess({ 
+            id: id,
             ...result.val()
           }))
           

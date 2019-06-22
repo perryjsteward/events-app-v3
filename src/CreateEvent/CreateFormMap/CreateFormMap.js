@@ -19,6 +19,7 @@ class CreateFormMap extends Component {
     addressInput =  React.createRef();
 
     componentDidMount = () => {
+
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position, error) => {
                 if(position) {
@@ -96,6 +97,21 @@ class CreateFormMap extends Component {
             lat = this.state.selectedPlace.lat; 
             lng = this.state.selectedPlace.lng;
         }
+
+        if(this.props.event){
+            lng = this.props.event.location.lng;
+            lat = this.props.event.location.lat;
+            const selectedPlace = {
+                address: this.props.event.address,
+                lat: this.props.event.location.lat,
+                lng: this.props.event.location.lng,
+                name: this.props.event.address
+            }
+            this.setState({
+                selectedPlace: selectedPlace
+            });
+        }
+
         let location = {
             lat: lat, 
             lng: lng, 
@@ -197,6 +213,7 @@ class CreateFormMap extends Component {
     }
  
     render() {
+
         return (
             <React.Fragment>
                 <Script 
@@ -230,7 +247,8 @@ const mapStateToProps = state => {
         createError: state.createError,
         imageError: state.imageError,
         imagePath: state.imagePath,
-        location: state.location
+        location: state.location,
+        event: state.event
     };
   };
   
