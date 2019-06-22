@@ -234,6 +234,7 @@ class CreateForm extends Component {
                 {groupTwoInputs}
                 {groupThreeInputs}
             </div>
+            <div className="create-form__padding"></div>
             <CreateFormControls
                 onSubmit={() => this.onSubmit()}
                 onReset={this.handleReset}
