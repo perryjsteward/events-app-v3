@@ -33,12 +33,22 @@ const Input = React.forwardRef((props, ref) => {
         );
     }
 
-    if(props.value) {
+    if(props.value && !props.suffix) {
         classes.push('input__with-suffix');
         inputSuffix = (
             <span 
                 onClick={() => props.clearInput()}
                 className={"input__icon input__suffix fas fa-times"}>
+            </span>
+        );
+    }
+
+    if(props.suffix) {
+        classes.push('input__with-suffix');
+        inputSuffix = (
+            <span 
+                onClick={() => props.suffixMethod()}
+                className={`input__icon input__suffix fas ${props.suffix}`}>
             </span>
         );
     }
