@@ -39,7 +39,7 @@ class CreateForm extends Component {
     if(name === 'upload_file' && value && found.isValid){
         this.props.onImageUpload(value);
     }
-
+    
     let validatedForm = newForm.map(el => {
         if(el.hasStarted && el.name !== name){
             return {
@@ -49,7 +49,7 @@ class CreateForm extends Component {
         }
         return el;
     })
-
+    
     // set new form and check form validity
     this.setState({ 
         createForm: validatedForm,
