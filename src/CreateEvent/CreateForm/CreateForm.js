@@ -49,7 +49,7 @@ class CreateForm extends Component {
         }
         return el;
     })
-    
+
     // set new form and check form validity
     this.setState({ 
         createForm: validatedForm,
@@ -226,7 +226,7 @@ class CreateForm extends Component {
     return (
         <div className='create-form__container'>
             <div className="create-form__content">
-                <h4 onClick={this.checkForm}>Create an Event</h4>
+                <h3 onClick={this.checkForm}>Create an Event</h3>
                 <p>Pop your event information here and get your free page to share with friends and family.</p>
                 {alertElement}
                 {uploadElement}

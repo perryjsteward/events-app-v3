@@ -4,16 +4,16 @@ import Button from '../../_shared/Button/Button';
 
 const ViewEventFooterControls = (props) => {
 
-    let attending = props.event ? props.event.attending : 1;
+    // let attending = props.event ? props.event.attending : 1;
     
     return (
         <div className="view-form__controls-container">
             <div className="view-form__controls-content">
                 <div className="view-form__controls__button-wrapper">
-                    <div className="view-form__attending">
+                    {/* <div className="view-form__attending">
                         <span className="far fa-thumbs-up"></span>
                         <p>{attending} going</p>
-                    </div>
+                    </div> */}
                     <Button
                         onClick={() => props.onSave()}
                         type="primary" 

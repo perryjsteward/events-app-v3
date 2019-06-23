@@ -13,6 +13,7 @@ const ViewEventContent = (props) => {
     let eventDescription = <div className="event__content-description__loading"></div>;
     let eventMap = <div className="event__content-map__loading"></div>;
     let eventHelp = <div className="event__content-help__loading"></div>;
+    let eventAttendees = <div className="event__content-attending__loading"></div>;
 
     if(props.event){
         eventType = (
@@ -52,6 +53,16 @@ const ViewEventContent = (props) => {
             </div>
         );
     }
+
+    if(props.event && props.event.attending){
+        eventAttendees = (
+            <div className="event__content-location">
+                <span className="far fa-thumbs-up"></span>
+                <p>{props.event.attending} going</p>
+            </div>
+        );
+    }
+    
 
     if(props.event && props.event.start_date){
         let seperator = '';
@@ -114,6 +125,7 @@ const ViewEventContent = (props) => {
             {eventName}
             {eventAddress}
             {eventDate}
+            {eventAttendees}
             {eventDescription}
             {eventMap}
             {eventHelp}
