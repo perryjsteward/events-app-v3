@@ -49,7 +49,7 @@ class CreateForm extends Component {
         }
         return el;
     })
-
+    
     // set new form and check form validity
     this.setState({ 
         createForm: validatedForm,
@@ -61,6 +61,7 @@ class CreateForm extends Component {
   setInputElement = (el) => {
     let element = (
         <Input
+            id={el.name}
             ref={el.ref}
             key={el.name}
             value={el.value}
@@ -237,6 +238,7 @@ class CreateForm extends Component {
             <div className="create-form__padding"></div>
             <CreateFormControls
                 onSubmit={() => this.onSubmit()}
+                // onSubmit={() => console.log(this.state)}
                 onReset={this.handleReset}
                 isValid={this.isFormValid()}>
             </CreateFormControls>

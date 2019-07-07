@@ -1,4 +1,4 @@
-import moment from "moment";
+// import moment from "moment";
 
 export const trimText = text => {
     if(text){
@@ -16,41 +16,60 @@ export const removeCommas = text => {
     }
 }
 
-export const getStartDateTime = event => {
-    const start_date = event.start_date.split('-');
-    const start_time = event.start_time ? event.start_time.split(':') : ['00', '00'];
-    return [
-        start_date[0], 
-        start_date[1], 
-        start_date[2], 
-        parseInt(start_time[0]), 
-        parseInt(start_time[1])
-    ];
+export const removeAddressCommas = event => {
+    if(event && event.address){
+        return event.address.replace(/,/g, '');
+    } else {
+        return;
+    }
 }
 
-export const getDuration = event => {
+export const getStartDateTime = event => {
+    let allDay = false;
+    if(!event.start_time && !event.end_date && !event.start_time){
+        allDay = true;
+    }
+
     const start_date = event.start_date.split('-');
     const start_time = event.start_time ? event.start_time.split(':') : ['00', '00'];
+    let dateArr = [
+        start_date[0], 
+        start_date[1], 
+        start_date[2]
+    ];
 
-    const end_date = event.end_date ? event.end_date.split('-') : start_date;
-    let end_time = event.end_time ? event.end_time.split(':') : ['00', '00'];
-
-    if(!event.end_time && event.end_date){
-        end_time = start_time;
+    if(!allDay) {
+        dateArr.push(parseInt(start_time[0]))
+        dateArr.push(parseInt(start_time[1]))
     }
 
-    const start_date_time = moment([...start_date, ...start_time]);
-    const end_date_time = moment([...end_date, ...end_time]);
+    return dateArr;
+}
 
-    var duration = moment.duration(end_date_time.diff(start_date_time));
 
-    if(end_date_time.isSameOrBefore(start_date_time)){
-        return { 
-            minutes: 30 
-        };
-    } else {
-        return {
-            minutes: duration.asMinutes()
-        };
+export const getEndDateTime = event => {
+    let allDay = false;
+    const startDateTime = getStartDateTime(event);
+
+    let end_date = event.end_date ? event.end_date.split('-') : startDateTime.slice(0,3);
+    let end_time = event.end_time ? event.end_time.split(':') : startDateTime.slice(3,5);
+
+    end_date[2] = parseInt(end_date[2]) + 1
+
+    let dateArr =  [
+        end_date[0], 
+        end_date[1], 
+        end_date[2]
+    ];
+
+    if(!event.start_time && !event.end_date && !event.start_time){
+        allDay = true;
     }
+
+    if(!allDay){
+        dateArr.push(parseInt(end_time[0]))
+        dateArr.push(parseInt(end_time[1]))
+    }
+
+    return dateArr;
 }

@@ -4,7 +4,7 @@
 import React from 'react';
 import * as ics from 'ics';
 import './ViewEventSave.scss';
-import { trimText, removeCommas, getStartDateTime, getDuration } from '../../_utils/eventUtils';
+import { trimText, removeAddressCommas, getStartDateTime, getEndDateTime } from '../../_utils/eventUtils';
 
 const ViewEventSave = props => {
 
@@ -20,17 +20,24 @@ const ViewEventSave = props => {
 
     const getICal = event => {
         if(props.event) {
-            return event = {
+            let event = {
                 start: getStartDateTime(props.event),
-                duration: getDuration(props.event),
+                end: getEndDateTime(props.event),
                 title: props.event.name,
                 description: trimText(props.event.description),
-                location: removeCommas(props.event.location.address),
+                location: removeAddressCommas(props.event.location),
                 url: document.location.href,
-                geo: { lat: props.event.location.lat, lon: props.event.location.lng },
                 categories: ['EventsApp'],
                 status: 'CONFIRMED',
             }
+            if(props.location && props.location.lat && props.location.lng){
+                const geo = { 
+                    lat: props.event.location.lat,
+                    lon: props.event.location.lng
+                };
+                event['geo'] = geo;
+            }
+            return event;
         }
 
     }

@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import './ViewEventShare.scss';
 import copy from 'copy-to-clipboard';
 import ReactGA from 'react-ga';
+import { isMobileDevice } from '../../_utils/appUtils';
 
 class ViewEventShare extends Component{
     state = {
@@ -20,7 +21,7 @@ class ViewEventShare extends Component{
     };
 
     render() {
-        let subText = 'Check out this event on EventsApp';
+        let subText = 'Check out my upcoming event';
 
         if(this.props.event){
             subText += `: ${this.props.event.name}`;
@@ -29,6 +30,38 @@ class ViewEventShare extends Component{
         if(this.props.event && this.props.event.location && this.props.event.location.name){
             subText += ` at ${this.props.event.location.name}`;
         }
+
+        const emailBody = encodeURI(`Hi There! ${subText}\n\nView your invite here: ${document.location.href}`)
+        const emailSubject = encodeURI(`Phil @ EventsApp: You've been invited to ${this.props.event.name}!`);
+        let emailLink = `mailto:?subject=${emailSubject}&body=${emailBody}`;
+
+        let smsLinkItem = null;
+        let whatsappItem = null;
+        if(isMobileDevice()){
+            let smsBody = encodeURI(`${emailBody}`);
+            let smsLink = `sms:&body=${smsBody}`;
+            smsLinkItem = (
+                <li>
+                    <a id="sms-link"
+                        target="_self"
+                        href={smsLink}>
+                        Text Message
+                    </a>
+                </li>
+            );
+            let whatsappBody = decodeURI(smsBody);
+            let whatsappLink = `https://wa.me/?text=${whatsappBody}`;
+            whatsappItem = (
+                <li>
+                    <a id="whatsapp-link"
+                        target="_self"
+                        href={whatsappLink}>
+                        WhatsApp
+                    </a>
+                </li>
+            );
+
+        };
 
         return (
             <div>
@@ -42,6 +75,14 @@ class ViewEventShare extends Component{
                             {this.state.copyLinkText}
                         </a>
                     </li>
+                    <li>
+                        <a id="email-link"
+                            href={emailLink}>
+                            Email
+                        </a>
+                    </li>
+                    {smsLinkItem}
+                    {whatsappItem}
                     {/* <li>
                         <a id="facebook-link"
                             href={facebookLink} 
@@ -61,12 +102,6 @@ class ViewEventShare extends Component{
                             href={messengerLink}
                             target="_blank noopener noreferrer">
                             Messenger
-                        </a>
-                    </li>
-                    <li>
-                        <a id="email-link"
-                            href={emailLink}>
-                            Email
                         </a>
                     </li>
                     <li>
