@@ -9,6 +9,7 @@ const CreateFormControls = (props) => {
         <div className="create-form__controls-container">
             <div className="create-form__controls-content">
                 <div className="create-form__controls__button-wrapper">
+                
                     <Button 
                         onClick={props.onReset}
                         type="link" 
