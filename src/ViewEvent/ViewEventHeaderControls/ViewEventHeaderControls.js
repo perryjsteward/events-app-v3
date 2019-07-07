@@ -18,15 +18,21 @@ const ViewEventHeaderControls = (props) => {
                 <Link to='/' onClick={() => gaNavigateBack()}>
                     <div className="event__controls-icon__container">
                         <div className="event__controls-icon__bg"></div>
-                        <span className="fas fa-chevron-left event__controls-icon"></span>
+                        <span className="fas fa-home event__controls-icon"></span>
                     </div>   
                 </Link>
+                {/* <Link to={`/?edit=${true}`}>
+                    <div className="event__controls-icon__container">
+                        <div className="event__controls-icon__bg"></div>
+                        <span className="fas fa-chevron-left event__controls-icon"></span>
+                    </div>   
+                </Link> */}
                 <div className="align-right">
                     <div 
                         onClick={() => props.onSave()}
                         className="event__controls-icon__container">
                         <div className="event__controls-icon__bg"></div>
-                        <span className="far fa-heart event__controls-icon"></span>
+                        <span className="far fa-calendar-alt event__controls-icon"></span>
                     </div> 
                     <div className="spacer"></div>
                     <div

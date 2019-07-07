@@ -18,7 +18,10 @@ class CreateFormMap extends Component {
 
     addressInput =  React.createRef();
 
-    componentDidMount = () => {
+    componentDidMount = () => {}
+
+    setCurrentLocation = () => {
+        console.log('setting location')
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position, error) => {
                 if(position) {
@@ -211,9 +214,11 @@ class CreateFormMap extends Component {
                         ref={(input) => { this.addressInput = input; }}
                         onChange={(e) => this.handleUserInput(e)} //need to smartly remove this
                         prefix="fa-search"
+                        suffix="fa-location-arrow"
                         size="medium"
                         hint='helloooo'
                         type="text"
+                        suffixMethod={() => this.setCurrentLocation()}
                         isValid={false}
                         hasStarted={this.state.hasStarted}
                         placeholder="Search street address" />

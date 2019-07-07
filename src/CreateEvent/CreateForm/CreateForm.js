@@ -39,7 +39,7 @@ class CreateForm extends Component {
     if(name === 'upload_file' && value && found.isValid){
         this.props.onImageUpload(value);
     }
-
+    
     let validatedForm = newForm.map(el => {
         if(el.hasStarted && el.name !== name){
             return {
@@ -61,12 +61,12 @@ class CreateForm extends Component {
   setInputElement = (el) => {
     let element = (
         <Input
-            ref={(input) => el.ref = input}
+            ref={el.ref}
             key={el.name}
             value={el.value}
             clearInput={() => {
                 this.validateUserInput('', el.name);
-                el.ref.focus();
+                el.ref.current.focus();
             }}
             onChange={(e) => this.validateUserInput(e.target.value, el.name)}
             required={el.validation[formRules.isRequired]}
@@ -177,12 +177,13 @@ class CreateForm extends Component {
     let element = currForm.filter(el => {
         return el.validation[formRules.isRequired] && !el.isValid;
     })[0];
-    if(element){
+    if(element && element.ref && element.ref.current){
         element.ref.current.focus();
     }
   }
 
   setDefaultValues = (currForm, event) => {
+    //   console.log(event)
     // if(event){
     //     return currForm.map(el => {
     //         return {
@@ -225,7 +226,7 @@ class CreateForm extends Component {
     return (
         <div className='create-form__container'>
             <div className="create-form__content">
-                <h4 onClick={this.checkForm}>Create an Event</h4>
+                <h3 onClick={this.checkForm}>Create Event</h3>
                 <p>Pop your event information here and get your free page to share with friends and family.</p>
                 {alertElement}
                 {uploadElement}
@@ -233,6 +234,7 @@ class CreateForm extends Component {
                 {groupTwoInputs}
                 {groupThreeInputs}
             </div>
+            <div className="create-form__padding"></div>
             <CreateFormControls
                 onSubmit={() => this.onSubmit()}
                 onReset={this.handleReset}

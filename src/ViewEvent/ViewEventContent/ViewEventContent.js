@@ -13,6 +13,7 @@ const ViewEventContent = (props) => {
     let eventDescription = <div className="event__content-description__loading"></div>;
     let eventMap = <div className="event__content-map__loading"></div>;
     let eventHelp = <div className="event__content-help__loading"></div>;
+    let eventAttendees = <div className="event__content-attending__loading"></div>;
 
     if(props.event){
         eventType = (
@@ -52,6 +53,16 @@ const ViewEventContent = (props) => {
             </div>
         );
     }
+
+    if(props.event && props.event.attending){
+        eventAttendees = (
+            <div className="event__content-location">
+                <span className="far fa-thumbs-up"></span>
+                <p>{props.event.attending} going</p>
+            </div>
+        );
+    }
+    
 
     if(props.event && props.event.start_date){
         let seperator = '';
@@ -103,7 +114,7 @@ const ViewEventContent = (props) => {
         eventHelp = (
             <div className="event__content-help">
                 <p className="sub-title">Help</p>
-                <p>Need some help? <a href={`mailto:help.eventsapp@gmail.com?subject=I need help with Event: ${props.id}&body=${body}`}>Send us an email</a></p>
+                <p>Need some help from EventsApp? <a href={`mailto:help.eventsapp@gmail.com?subject=I need help with Event: ${props.id}&body=${body}`}>Send us an email</a></p>
             </div>
         );
     }
@@ -114,6 +125,7 @@ const ViewEventContent = (props) => {
             {eventName}
             {eventAddress}
             {eventDate}
+            {eventAttendees}
             {eventDescription}
             {eventMap}
             {eventHelp}

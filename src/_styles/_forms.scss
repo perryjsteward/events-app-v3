@@ -79,7 +79,7 @@ input[type=date]{
     line-height: 18px;
 
     &::before {
-        content: 'What day';
+        content: 'dd/mm/yyyy';
         color: $grey-400;
     }
     &::after {
@@ -110,7 +110,7 @@ input[type=time]{
     transition-property: border, background-color;
 
     &::before {
-        content: 'What time';
+        content: 'hh:mm';
         color: $grey-400;
     }
     &::after {

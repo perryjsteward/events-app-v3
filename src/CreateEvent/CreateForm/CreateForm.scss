@@ -1,25 +1,35 @@
 @import '../../_styles/spacing';
 
 .create-form__content {
-    margin-left: auto;
-    margin-right: 0;
+    margin: auto;
+    // margin-left: auto;
+    // margin-right: 0;
     width: $space-1100;
-    padding: $space-200;
     padding-right: $space-600;
     padding-left: $space-600;
-    height: 100%;
-    margin-bottom: $space-600;
 }
 
 .create-form__container {
-    width: 55%;
+    width: 60%;
 }
 
+.create-form__padding {
+    width: 100%;
+    height: $space-800;
+    background:transparent;
+}
+
+
 @media only screen and (max-width: 900px) { 
+    .create-form__container {
+        width: 55%;
+    }
     .create-form__content {
         margin: auto;
-        width: 100%;
-        margin-bottom: $space-600;
+        // width: calc(100% - $space-400);
+    }
+    .create-form__padding {
+        height: $space-600;
     }
 }
 
@@ -27,10 +37,12 @@
     .create-form__content {
         margin: auto;
         width: $space-1100;
-        margin-bottom: $space-400;
     }
     .create-form__container {
         width: 100%;
+    }
+    .create-form__padding {
+        height: $space-400;
     }
     
 }
@@ -47,3 +59,5 @@
         margin-top: $space-500;
     }
 }
+
+

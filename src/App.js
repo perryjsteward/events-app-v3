@@ -40,7 +40,7 @@ class App extends Component {
             <Spinner></Spinner>
             <Route path="/" exact component={CreateEvent} />
             {/* View route for legacy events */}
-            <Route path="/#/view" render={
+            <Route path="/view" render={
               params => {
                 let id = params.location.search.split('=')[1];
                 return <Redirect to={`/v/${id}`} />
@@ -50,6 +50,15 @@ class App extends Component {
               params => {
                 let id = params.location.search.split('=')[1];
                 return <Redirect to={`/v/${id}`} />
+              } 
+            }/>
+            <Route path="/event/:eventId" render={
+              params => {
+                console.log(params)
+                if(params){
+                  let id = params.match.params.eventId;
+                  return <Redirect to={`/v/${id}`} />                
+                }
               } 
             }/>
             <Route path="/v/:eventId" component={ViewEvent} />

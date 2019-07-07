@@ -44,8 +44,26 @@
     }
 }
 
-.event__content-date {
 
+.event__content-attending {
+    margin-bottom: $space-200;
+
+    .fas {
+        font-size: $text-100;
+        position: relative;
+        top: -2px;
+    }
+
+    p {
+        display: inline;
+        font-size: $text-300;
+        margin-left: $space-300;
+    }
+}
+
+.event__content-date {
+    margin-bottom: $space-200;
+    
     .far {
         font-size: $text-100;
         position: relative;
