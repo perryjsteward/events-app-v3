@@ -2,6 +2,7 @@
   "name": "react-events-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://ec2-35-178-169-17.eu-west-2.compute.amazonaws.com/create/",
   "dependencies": {
     "axios": "^0.18.0",
     "copy-to-clipboard": "^3.2.0",

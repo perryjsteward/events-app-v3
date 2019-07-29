@@ -35,7 +35,7 @@ class App extends Component {
 
   render() {
     return (
-        <Router>
+        <Router basename={'/create'}>
           <Provider store={store}>
             <Spinner></Spinner>
             <Route path="/" exact component={CreateEvent} />

@@ -19,16 +19,32 @@ class CreateForm extends Component {
       hasTriedSubmission: false
   }
 
-  validateUserInput = (value, name) => {
+  componentDidMount() {
+    if(this.props.event){
+        this.setDefaultValues(this.props.event)
+    }
+  }
+
+  setDefaultValues = event => {
+    // for(let key in event){
+        // console.log(key, event[key])
+        // this.validateUserInput(event[key], key, false);
+    // }
+  }
+
+
+  validateUserInput = (value, name, hasStarted = true) => {
+    
     let currForm = [ ...this.state.createForm ]; // create a copy
     // update element and check validitiy
     let newForm = currForm.map(el => {
         if(el.name === name){
+            console.log(value, name)
             return {
                 ...el,
-                 value: value,
-                 isValid: inputValidation(value, el.validation, currForm),
-                 hasStarted: true
+                value: value,
+                isValid: inputValidation(value, el.validation, currForm),
+                hasStarted: hasStarted
             }
         }
         return el;
@@ -183,23 +199,9 @@ class CreateForm extends Component {
     }
   }
 
-  setDefaultValues = (currForm, event) => {
-    //   console.log(event)
-    // if(event){
-    //     return currForm.map(el => {
-    //         return {
-    //             ...el,
-    //             value: event[el.name]
-    //         };
-    //     });
-    // } else {
-        return currForm;
-    // }
-  }
 
   render() {
-    const createForm = [ ...this.state.createForm ]
-    let currForm = this.setDefaultValues(createForm, this.props.event);
+    const currForm = [ ...this.state.createForm ]
 
     let allInputs = currForm
         .filter(el => el.type !== 'file')
@@ -237,8 +239,8 @@ class CreateForm extends Component {
             </div>
             <div className="create-form__padding"></div>
             <CreateFormControls
-                onSubmit={() => this.onSubmit()}
-                // onSubmit={() => console.log(this.state)}
+                // onSubmit={() => this.onSubmit()}
+                onSubmit={() => console.log(this.state.createForm)}
                 onReset={this.handleReset}
                 isValid={this.isFormValid()}>
             </CreateFormControls>

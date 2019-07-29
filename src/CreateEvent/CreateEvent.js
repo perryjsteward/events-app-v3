@@ -35,7 +35,8 @@ const CreateEvent = (props) => {
       if(!formData['id']){
         props.onCreateEvent(formData);
       } else {
-        props.onEditEvent(formData);
+        console.log(formData);
+        // props.onEditEvent(formData);
       }
     }
 
