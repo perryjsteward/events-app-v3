@@ -54,7 +54,7 @@ export const getEndDateTime = event => {
     let end_date = event.end_date ? event.end_date.split('-') : startDateTime.slice(0,3);
     let end_time = event.end_time ? event.end_time.split(':') : startDateTime.slice(3,5);
 
-    end_date[2] = parseInt(end_date[2]) + 1
+    end_date[2] = parseInt(end_date[2]);
 
     let dateArr =  [
         end_date[0], 

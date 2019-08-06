@@ -20,7 +20,7 @@ const ViewEventHeaders = props => {
 
     return (    
         <Helmet>
-            <title>{name}</title>
+            <title>View | {name}</title>
             <meta property="og:title" content={name} />
             <meta property="og:url" content={document.location} />
             <meta property="og:description" content={description} />

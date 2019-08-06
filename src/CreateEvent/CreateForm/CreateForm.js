@@ -39,7 +39,6 @@ class CreateForm extends Component {
     // update element and check validitiy
     let newForm = currForm.map(el => {
         if(el.name === name){
-            console.log(value, name)
             return {
                 ...el,
                 value: value,
@@ -239,8 +238,8 @@ class CreateForm extends Component {
             </div>
             <div className="create-form__padding"></div>
             <CreateFormControls
-                // onSubmit={() => this.onSubmit()}
-                onSubmit={() => console.log(this.state.createForm)}
+                onSubmit={() => this.onSubmit()}
+                // onSubmit={() => console.log(this.state.createForm)}
                 onReset={this.handleReset}
                 isValid={this.isFormValid()}>
             </CreateFormControls>

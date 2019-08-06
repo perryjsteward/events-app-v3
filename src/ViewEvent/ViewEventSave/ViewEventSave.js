@@ -37,6 +37,7 @@ const ViewEventSave = props => {
                 };
                 event['geo'] = geo;
             }
+            console.log(event)
             return event;
         }
 
@@ -58,6 +59,7 @@ const ViewEventSave = props => {
         var element = document.createElement('a');
         element.setAttribute('href', 'data:text/calendar;charset=utf-8,' + encodeURIComponent(text));
         element.setAttribute('download', filename);
+        element.setAttribute('target', '_blank');
       
         element.style.display = 'none';
         document.body.appendChild(element);

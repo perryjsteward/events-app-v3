@@ -4,6 +4,7 @@ button, .button {
     white-space: nowrap;
     text-decoration: none;
     line-height: 1;
+    font-weight: 600;
 
     // defaults
     font-size: $text-300;
@@ -18,28 +19,27 @@ button, .button {
     &.btn-lg {
         font-size: $text-600;
         padding: 18px 30px;
-        border-radius: 2px;
+        border-radius: 0px;
     }
     &.btn-md {
         font-size: $text-400;
         padding: 14px 28px; 
-        border-radius: 2px;
+        border-radius: 0px;
     }
     &.btn-sm {
         font-size: $text-300;
         padding: 14px 22px;  
-        border-radius: 2px;
+        border-radius: 0px;
     }
     &.btn-xs {
         font-size: $text-200;
         padding: 10px 14px;
-        border-radius: 2px;
+        border-radius: 0px;
     }
 
     // default actions
     &:active {
-        outline: none !important;
-        background-color: $grey-700;
+        opacity: 0.8;
     }
     &:focus {
         outline: none !important;
@@ -55,18 +55,17 @@ button, .button {
     // button types
     &.outline {
         background-color: transparent !important;
-        color: $grey-500;
-        border-color: $grey-500;
+        color: $grey-700;
+        border-color: $grey-700;
         border-style: solid;
 
-        &.btn-lg { border-width: 2px; }
-        &.btn-md { border-width: 2px; }
-        &.btn-sm { border-width: 1px; }
-        &.btn-xs { border-width: 1px; }
+        &.btn-lg { border-width: 3px; }
+        &.btn-md { border-width: 3px; }
+        &.btn-sm { border-width: 2px; }
+        &.btn-xs { border-width: 2px; }
 
         &:active {
-            border-color: $grey-600;
-            color: $grey-600;
+            opacity: 0.8;
         }
         &:disabled {
             border-color: rgba($grey-500, 0.3);
@@ -80,7 +79,7 @@ button, .button {
 
         // type actions
         &:active {
-            background-color: $primary-500;
+            opacity: 0.8;
         }
 
         &:disabled {
@@ -94,8 +93,7 @@ button, .button {
             border-style: solid;
     
             &:active {
-                border-color: $primary-500;
-                color: $primary-500;
+                opacity: 0.8;
             }
 
             &:disabled {
@@ -111,7 +109,7 @@ button, .button {
 
         // type actions
         &:active {
-            background-color: $green-500;
+            opacity: 0.8;
         }
         &:disabled {
             background-color: rgba($green, 0.3) !important;
@@ -124,8 +122,7 @@ button, .button {
             border-style: solid;
     
             &:active {
-                border-color: $green-500;
-                color: $green-500;
+                opacity: 0.8;
             }
 
             &:disabled {
@@ -141,7 +138,7 @@ button, .button {
 
         // type actions
         &:active {
-            background-color: $orange-500;
+            opacity: 0.8;
         }
         &:disabled {
             background-color: rgba($orange, 0.3) !important;
@@ -154,8 +151,7 @@ button, .button {
             border-style: solid;
     
             &:active {
-                border-color: $orange-500;
-                color: $orange-500;
+                opacity: 0.8;
             }
 
             &:disabled {
@@ -174,7 +170,7 @@ button, .button {
             text-decoration: underline;
         }
         &:active {
-            color: $primary-500;
+            opacity: 0.8;
         }
         &:disabled {
             color: rgba($primary, 0.3);
@@ -225,7 +221,7 @@ a {
         text-decoration: underline;
     }
     &:active {
-        color: $primary-500;
+        opacity: 0.8;
     }
     &:disabled {
         color: rgba($primary, 0.3);
